@@ -1,0 +1,8 @@
+# Alleen gebruikt als GitHub Pages rechtstreeks vanaf de branch publiceert:
+# instructies en scripts niet mee online zetten.
+exclude:
+  - README.md
+  - inkomsten/scripts
+  - inkomsten/store
+  - inkomsten/package.json
+  - inkomsten/package-lock.json
