@@ -1,0 +1,106 @@
+name: Wekelijks bijwerken
+
+on:
+  schedule:
+    # Elke maandag om 10:00 UTC (12:00 zomertijd, 11:00 wintertijd).
+    - cron: '0 10 * * 1'
+  workflow_dispatch: # handmatig starten via Actions → Run workflow
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: weekly
+  cancel-in-progress: false
+
+jobs:
+  update:
+    # Alleen ophalen bij de planning of een handmatige start, niet bij een gewone push.
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: inkomsten
+    env:
+      EB_USERNAME: ${{ secrets.EB_USERNAME }}
+      EB_PASSWORD: ${{ secrets.EB_PASSWORD }}
+      DETAIL_PIN: ${{ secrets.DETAIL_PIN }}
+      STORE_KEY: ${{ secrets.STORE_KEY }}
+      TZ: Europe/Brussels
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: inkomsten/package-lock.json
+
+      - run: npm ci
+
+      - name: Browser installeren
+        run: npx playwright install --with-deps chromium
+
+      - name: Transacties ophalen bij eb online
+        run: node scripts/fetch.mjs
+
+      - name: Verwerken en site-data bouwen
+        run: |
+          node scripts/import.mjs
+          node scripts/build.mjs
+
+      - name: Screenshot bewaren bij een fout
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fout
+          path: inkomsten/import/fout.png
+          if-no-files-found: ignore
+
+      - name: Wijzigingen committen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs store
+          if git diff --cached --quiet; then
+            echo "Geen nieuwe gegevens."
+          else
+            git commit -m "Data bijgewerkt $(date +%Y-%m-%d)"
+            git push
+          fi
+
+  deploy:
+    needs: update
+    # Ook na een gewone push (dan is 'update' overgeslagen).
+    if: always() && (needs.update.result == 'success' || needs.update.result == 'skipped')
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main # de commit van 'update' meenemen
+
+      # oemtata.be → hoofdsite (root van de repo), oemtata.be/inkomsten → inkomsten/docs
+      - name: Site samenstellen
+        run: |
+          mkdir _site
+          rsync -a \
+            --exclude '.git*' --exclude '.github' --exclude '_site' \
+            --exclude 'inkomsten' --exclude 'README.md' \
+            ./ _site/
+          mkdir -p _site/inkomsten
+          cp -r inkomsten/docs/. _site/inkomsten/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
