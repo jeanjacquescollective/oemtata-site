@@ -1,0 +1,17 @@
+{
+  "name": "oemtata-inkomsten",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dagoverzichten van de Europabank-terminal (ebonline.be) voor café Oemtata",
+  "scripts": {
+    "fetch": "node --env-file-if-exists=.env scripts/fetch.mjs",
+    "import": "node --env-file-if-exists=.env scripts/import.mjs",
+    "build": "node --env-file-if-exists=.env scripts/build.mjs",
+    "weekly": "node --env-file-if-exists=.env scripts/fetch.mjs && node --env-file-if-exists=.env scripts/import.mjs && node --env-file-if-exists=.env scripts/build.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}
