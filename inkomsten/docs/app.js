@@ -44,8 +44,8 @@
   let detail = null; // ontcijferde transacties
   const charts = {};
   const state = Object.assign(
-    { preset: 'last3m', from: '', to: '', group: 'week', metric: 'cents', type: 'bar', compare: false, table: false },
-    store.get('oemtata-view', {})
+    { preset: 'lastWeek', from: '', to: '', group: 'day', metric: 'cents', type: 'bar', compare: false, table: false },
+    store.get('oemtata-view-v2', {})
   );
 
   function today() {
@@ -139,7 +139,7 @@
   }
 
   // ---------- render: publiek ----------
-  function kpiHtml(label, value, now, prev, fmtDelta = true) {
+  function kpiHtml(label, value, now, prev, fmtDelta = true, note = '') {
     let delta = '';
     if (fmtDelta && prev != null && prev !== 0 && now != null) {
       const pct = ((now - prev) / Math.abs(prev)) * 100;
@@ -148,6 +148,7 @@
     } else if (fmtDelta) {
       delta = '<div class="delta">&nbsp;</div>';
     }
+    if (note) delta += `<div class="delta">${note}</div>`;
     return `<div class="kpi"><div class="label">${label}</div><div class="value">${value}</div>${delta}</div>`;
   }
 
@@ -160,7 +161,7 @@
     $('metric').value = state.metric;
     $('compare').checked = state.compare;
     document.querySelectorAll('.seg button').forEach((b) => b.classList.toggle('on', b.dataset.type === state.type));
-    store.set('oemtata-view', { preset: state.preset, from, to, group: state.group, metric: state.metric, type: state.type, compare: state.compare, table: state.table });
+    store.set('oemtata-view-v2', { preset: state.preset, from, to, group: state.group, metric: state.metric, type: state.type, compare: state.compare, table: state.table });
 
     const len = daysBetween(from, to);
     const pFrom = addDays(from, -len), pTo = addDays(from, -1);
@@ -273,6 +274,7 @@
     const sales = tx.filter((t) => t.cents > 0);
     const sum = tx.reduce((s, t) => s + t.cents, 0);
     const fees = tx.reduce((s, t) => s + t.fee, 0);
+    const unsettled = sales.filter((t) => !t.fee).length; // commissie nog niet gekend
     const biggest = sales.reduce((m, t) => (t.cents > (m?.cents ?? 0) ? t : m), null);
     const foreign = sales.filter((t) => t.country && t.country !== 'BE').length;
 
@@ -288,7 +290,7 @@
 
     $('detailKpis').innerHTML =
       kpiHtml('Netto (na commissie)', euro(sum - fees), 0, null, false) +
-      kpiHtml('Commissie', euro(fees), 0, null, false) +
+      kpiHtml('Commissie', euro(fees), 0, null, false, unsettled ? `${nf(unsettled)} betaling${unsettled === 1 ? '' : 'en'} nog niet verrekend` : '') +
       kpiHtml('Grootste betaling', biggest ? euro(biggest.cents) : '–', 0, null, false) +
       kpiHtml('Drukste uur', busiest == null ? '–' : `${pad(busiest)}:00–${pad((busiest + 1) % 24)}:00`, 0, null, false) +
       kpiHtml('Buitenlandse kaarten', sales.length ? `${nf(foreign)} (${Math.round((foreign / sales.length) * 100)}%)` : '–', 0, null, false);
@@ -332,7 +334,7 @@
     const s = txRows.reduce((a, t) => ({ c: a.c + t.cents, f: a.f + t.fee }), { c: 0, f: 0 });
     $('txTable').innerHTML = txRows.length
       ? `<table><thead><tr><th>Tijdstip</th><th>Cafédag</th><th class="num">Bedrag</th><th class="num">Commissie</th><th>Kaart</th><th>Land</th></tr></thead><tbody>${
-        txRows.map((t) => `<tr><td>${be(t.ts.slice(0, 10))} ${t.time}</td><td>${WD[dow(t.day)]} ${short(t.day)}</td><td class="num">${euro(t.cents)}</td><td class="num">${euro(t.fee)}</td><td>${esc(t.brand)}${t.cardType ? ` <span class="hint">${esc(t.cardType)}</span>` : ''}</td><td>${esc(t.country || '')}</td></tr>`).join('')
+        txRows.map((t) => `<tr><td>${be(t.ts.slice(0, 10))} ${t.time}</td><td>${WD[dow(t.day)]} ${short(t.day)}</td><td class="num">${euro(t.cents)}</td><td class="num">${t.cents > 0 && !t.fee ? '<span class="hint" title="Nog niet verrekend">–</span>' : euro(t.fee)}</td><td>${esc(t.brand)}${t.cardType ? ` <span class="hint">${esc(t.cardType)}</span>` : ''}</td><td>${esc(t.country || '')}</td></tr>`).join('')
       }</tbody><tfoot><tr><td>${nf(txRows.length)} ${txRows.length === 1 ? 'betaling' : 'betalingen'}</td><td></td><td class="num">${euro(s.c)}</td><td class="num">${euro(s.f)}</td><td></td><td></td></tr></tfoot></table>`
       : '<p class="hint">Geen transacties in deze periode.</p>';
   }
@@ -347,6 +349,25 @@
     a.download = `oemtata_${$('txDay').value === 'all' ? `${state.from}_${state.to}` : $('txDay').value}.csv`;
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+
+  // ---------- thema ----------
+  const SUN = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+  const MOON = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1Z"/></svg>';
+  const isDark = () => (document.documentElement.dataset.theme ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark';
+  function showThemeBtn() {
+    const dark = isDark();
+    $('themeBtn').innerHTML = dark ? SUN : MOON;
+    const label = dark ? 'Licht thema' : 'Donker thema';
+    $('themeBtn').title = label;
+    $('themeBtn').setAttribute('aria-label', label);
+  }
+  function toggleTheme() {
+    const next = isDark() ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    store.set('oemtata-theme', next);
+    showThemeBtn();
+    if (detail) render();
   }
 
   // ---------- events ----------
@@ -383,12 +404,14 @@
     $('lockBtn').addEventListener('click', lock);
     $('txDay').addEventListener('change', () => renderTxTable(detail.filter((t) => t.day >= state.from && t.day <= state.to)));
     $('csvBtn').addEventListener('click', downloadCsv);
-    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => detail && render());
+    $('themeBtn').addEventListener('click', toggleTheme);
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { showThemeBtn(); if (detail) render(); });
   }
 
   // ---------- start ----------
   function init() {
     bind();
+    showThemeBtn();
     const pin = session.get('oemtata-pin');
     if (pin) unlock(pin).catch(() => { session.set('oemtata-pin', null); $('pinInput').focus(); });
   }

@@ -19,7 +19,10 @@ const add = (list) => {
   for (const t of list) {
     const k = txKey(t);
     local.set(k, (local.get(k) ?? 0) + 1);
-    if (!byKey.has(k)) byKey.set(k, t);
+    // De commissie staat pas in de export als de betaling verrekend is: een
+    // latere export met commissie vervangt een eerdere zonder.
+    const known = byKey.get(k);
+    if (!known || (!known.fee && t.fee)) byKey.set(k, t);
   }
   for (const [k, n] of local) counts.set(k, Math.max(counts.get(k) ?? 0, n));
 };

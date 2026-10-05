@@ -5,20 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Oemtata inkomsten</title>
 <meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232a78d6'/><rect x='7' y='16' width='4' height='9' rx='1.5' fill='white'/><rect x='14' y='10' width='4' height='15' rx='1.5' fill='white'/><rect x='21' y='6' width='4' height='19' rx='1.5' fill='white'/></svg>">
-<link rel="stylesheet" href="style.css?v=67194ce96e">
+<link rel="icon" type="image/png" href="../../img/logo.png">
+<script>try { const t = JSON.parse(localStorage.getItem('oemtata-theme')); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch { /* systeemthema */ }</script>
+<link rel="stylesheet" href="style.css?v=c291784714">
 </head>
 <body>
 <header class="top">
   <div class="wrap top-inner">
-    <div>
-      <h1>Oemtata</h1>
-      <p class="sub" id="updated">Inkomsten via de betaalterminal</p>
-    </div>
+    <a class="brand" href="../../" title="Naar oemtata.be">
+      <span class="logo" aria-hidden="true"></span>
+      <div>
+        <h1 aria-label="Oemtata inkomsten">OEᗰTᗩTᗩ</h1>
+        <p class="sub" id="updated">Inkomsten via de betaalterminal</p>
+      </div>
+    </a>
+    <div class="top-actions">
+    <button class="btn ghost icon" id="themeBtn" type="button" aria-label="Licht of donker thema" title="Licht of donker thema"></button>
     <button class="btn ghost" id="lockBtn" type="button" hidden>
       <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5Zm-3 8V7a3 3 0 1 1 6 0v3H9Z"/></svg>
       <span>Vergrendel</span>
     </button>
+    </div>
   </div>
 </header>
 
@@ -37,11 +44,11 @@
     <label>Periode
       <select id="preset">
         <option value="thisWeek">Deze week</option>
-        <option value="lastWeek">Vorige week</option>
+        <option value="lastWeek" selected>Vorige week</option>
         <option value="last4w">Laatste 4 weken</option>
         <option value="thisMonth">Deze maand</option>
         <option value="lastMonth">Vorige maand</option>
-        <option value="last3m" selected>Laatste 3 maanden</option>
+        <option value="last3m">Laatste 3 maanden</option>
         <option value="thisYear">Dit jaar</option>
         <option value="last12m">Laatste 12 maanden</option>
         <option value="all">Alles</option>
@@ -52,8 +59,8 @@
     <label>Tot <input type="date" id="to"></label>
     <label>Per
       <select id="group">
-        <option value="day">Dag</option>
-        <option value="week" selected>Week</option>
+        <option value="day" selected>Dag</option>
+        <option value="week">Week</option>
         <option value="month">Maand</option>
         <option value="quarter">Kwartaal</option>
         <option value="year">Jaar</option>
@@ -77,7 +84,7 @@
 
   <section class="card">
     <div class="card-head">
-      <h2 id="chartTitle">Omzet per week</h2>
+      <h2 id="chartTitle">Omzet per dag</h2>
       <button class="link" type="button" id="tableToggle">Toon tabel</button>
     </div>
     <div class="chart-box tall"><canvas id="mainChart" aria-label="Hoofdgrafiek" role="img"></canvas></div>
@@ -95,7 +102,7 @@
   <!-- Beschermd gedeelte -->
   <section id="detail">
     <div class="detail-head">
-      <h2>Details</h2>
+      <h2 aria-label="Details">ᗪETᗩIᒪᔕ</h2>
     </div>
     <section class="kpis" id="detailKpis"></section>
     <div class="grid2">
@@ -121,8 +128,12 @@
   </section>
 </main>
 
+<footer class="wrap foot">
+  <p><a href="../../">oemtata.be</a></p>
+</footer>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="app.js?v=7e1e89e56c"></script>
+<script src="app.js?v=67c05a6116"></script>
 </body>
 </html>

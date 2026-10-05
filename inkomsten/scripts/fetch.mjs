@@ -30,7 +30,14 @@ function defaultFrom() {
     const store = loadStore();
     const last = store.transactions.at(-1)?.day;
     // een paar dagen overlap: dubbels worden bij het importeren weggefilterd
-    if (last) return addDays(last, -3);
+    if (last) {
+      // Betalingen die nog niet verrekend waren (commissie 0) opnieuw ophalen,
+      // maar niet verder terug dan 60 dagen.
+      const limit = addDays(last, -60);
+      const pending = store.transactions.find((t) => t.ok && t.cents > 0 && !t.fee && t.day >= limit)?.day;
+      const from = addDays(last, -3);
+      return pending && pending < from ? pending : from;
+    }
   }
   return addDays(todayLocal(), -400);
 }
