@@ -4,16 +4,18 @@ DE GROTE OEMTA BEDANKINGSSHOW - het boek als website
 Inhoud van deze map
   index.html                 het boek (HTML, CSS en JavaScript in één bestand)
   img/                       alle foto's en affiches
+  css/                       de opmaak (main.css) en de lettertypes (fonts.css)
+  fonts/                     EB Garamond en IM Fell English (SIL Open Font License)
   js/page-flip.browser.js    de bibliotheek die de bladzijden laat omslaan (StPageFlip 2.0.7, MIT-licentie)
 
 Online zetten
-  Upload de hele map (index.html + img + js) naar je webhosting, bv. via FTP,
+  Upload de hele map (index.html + css + fonts + img + js) naar je webhosting, bv. via FTP,
   Netlify Drop (app.netlify.com/drop), GitHub Pages of de website van de Oemtata.
   Open daarna het adres van index.html in je browser.
 
 Lokaal bekijken
-  Dubbelklik op index.html. De lettertypes komen van Google Fonts, dus met internet
-  ziet het boek er het mooist uit. Zonder internet valt het terug op Georgia.
+  Dubbelklik op index.html. De lettertypes staan in de map fonts/, dus het boek
+  ziet er ook zonder internet goed uit.
 
 Bedienen
   Pijltjes of spatie: volgende/vorige bladzijde. Klik of sleep een hoek om om te slaan.

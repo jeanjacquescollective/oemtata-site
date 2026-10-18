@@ -4,178 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
+<title>De Grote Oemta Bedankingsshow</title>
+<link rel="icon" type="image/png" href="img/logo.png">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preload" href="fonts/im-fell-english.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/im-fell-english-sc.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<title>De Grote Oemta Bedankingsshow</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap">
-<style>
-/* Layout: an old clothbound book on a dark café table; soft paper pages that bend; type sized in container units of each page */
-:root{
-  --table:#17110d; --table-glow:#3b2a1c;
-  --paper:#efe3c6; --blank:#f8f3e7;
-  --ink:#2b2119; --ink-soft:#6e5c46; --oxblood:#7a2222; --gold:#c39a45; --leather:#3a1513; --cream:#fbf2dc;
-  --f-old:"IM Fell English", "EB Garamond", Georgia, serif;
-  --f-sc:"IM Fell English SC", "IM Fell English", Georgia, serif;
-  --f-body:"EB Garamond", Garamond, Georgia, "Times New Roman", serif;
-  --bar:56px;
-  color-scheme:dark;
-}
-html,body{height:100%}
-body{margin:0;color:var(--cream);font-family:var(--f-body);overflow:hidden;box-sizing:border-box;
-  background:radial-gradient(ellipse 75% 65% at 50% 45%,var(--table-glow),var(--table) 72%);background-color:var(--table);
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.app{height:100%;display:flex;flex-direction:column}
-.stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding-block:14px;box-sizing:border-box}
-#bookbox{max-width:100%}
-
-/* ---------- page base ---------- */
-.page{background:var(--paper);overflow:hidden}
-.pi{position:absolute;inset:0;container-type:size;overflow:hidden;color:var(--ink);
-  background-color:var(--paper);
-  background-image:
-    radial-gradient(ellipse 120% 100% at 50% 50%,transparent 60%,rgba(120,84,40,.22) 100%),
-    radial-gradient(circle at 82% 14%,rgba(150,105,50,.10) 0 2.2cqw,transparent 3cqw),
-    radial-gradient(circle at 14% 88%,rgba(150,105,50,.08) 0 1.6cqw,transparent 2.6cqw),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .33 0 0 0 0 .18 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-.L .pi::after,.R .pi::after{content:"";position:absolute;inset:0;pointer-events:none}
-.L .pi::after{background:linear-gradient(270deg,rgba(60,35,10,.28),rgba(60,35,10,.06) 5%,transparent 12%)}
-.R .pi::after{background:linear-gradient(90deg,rgba(60,35,10,.28),rgba(60,35,10,.06) 5%,transparent 12%)}
-.page.blank .pi{background:var(--blank);background-image:radial-gradient(ellipse 130% 110% at 50% 50%,transparent 70%,rgba(120,84,40,.10) 100%)}
-
-.content{position:absolute;inset:11cqw 10cqw 13cqw;display:flex;flex-direction:column;gap:3.4cqw;font-size:4.2cqw;line-height:1.42}
-.content.center{justify-content:center;align-items:center;text-align:center}
-.content p{margin:0}
-.rhead{position:absolute;top:5cqw;left:0;right:0;text-align:center;font-family:var(--f-sc);font-size:2.7cqw;letter-spacing:.18em;color:var(--ink-soft)}
-.folio{position:absolute;bottom:5.5cqw;left:0;right:0;text-align:center;font-family:var(--f-old);font-size:3cqw;color:var(--ink-soft)}
-.chap{font-family:var(--f-sc);font-size:3.2cqw;letter-spacing:.22em;color:var(--oxblood);text-align:center}
-h2{font-family:var(--f-old);font-weight:400;font-size:8.6cqw;line-height:1.02;margin:0;text-align:center;text-wrap:balance}
-h2 i{color:var(--oxblood)}
-h3{font-family:var(--f-sc);font-weight:400;font-size:4.6cqw;letter-spacing:.06em;margin:0;text-wrap:balance}
-.year{font-family:var(--f-old);font-style:italic;font-size:5.4cqw;color:var(--oxblood);text-align:center;line-height:1}
-.orn{text-align:center;font-family:var(--f-old);color:var(--oxblood);font-size:4.6cqw;line-height:1;letter-spacing:.6em}
-.rule{height:0;border-top:.3cqw solid var(--ink);border-bottom:.3cqw solid var(--ink);padding-top:.7cqw;width:30cqw;align-self:center}
-.dc::first-letter{font-family:var(--f-old);float:left;font-size:13cqw;line-height:.82;padding:1cqw 1.6cqw 0 0;color:var(--oxblood)}
-.lead{font-size:4.8cqw;line-height:1.4}
-.it{font-style:italic}
-.small{font-size:3.4cqw;color:var(--ink-soft)}
-.note{font-family:var(--f-old);font-style:italic;font-size:4.6cqw;line-height:1.35;text-align:center;color:var(--ink)}
-.grow{flex:1;min-height:0}
-.row{display:flex;gap:4cqw;min-height:0}
-.row>*{flex:1;min-width:0}
-ul.list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2.2cqw}
-ul.list li{padding-left:5cqw;position:relative}
-ul.list li::before{content:"❧";position:absolute;left:0;color:var(--oxblood)}
-
-/* plates (photos) */
-.plate{margin:0;display:flex;flex-direction:column;gap:1.6cqw;min-height:0;position:relative}
-.plate .frame{position:relative;flex:1;min-height:0;padding:1.4cqw;border:.3cqw solid var(--ink);background:rgba(255,250,235,.35)}
-.plate .frame::before{content:"";position:absolute;inset:.7cqw;border:.15cqw solid rgba(43,33,25,.5);pointer-events:none}
-.plate img{display:block;width:100%;height:100%;object-fit:cover;filter:sepia(.18) contrast(.97)}
-.plate.contain .frame{border:0;padding:0;background:none}
-.plate.contain .frame::before{display:none}
-.plate.contain img{object-fit:contain;filter:sepia(.12) drop-shadow(0 .6cqw 1.2cqw rgba(60,35,10,.3))}
-.plate figcaption{font-family:var(--f-old);font-size:3.2cqw;line-height:1.3;text-align:center;color:var(--ink-soft)}
-.plate figcaption .pl{font-family:var(--f-sc);letter-spacing:.12em;color:var(--ink);margin-right:1cqw}
-.plate.oval .frame{border-radius:50%;padding:0;border:.5cqw solid var(--gold);overflow:hidden}
-.plate.oval .frame::before{display:none}
-.plate.empty .frame{border:.35cqw dashed var(--ink-soft);background:repeating-linear-gradient(-45deg,transparent 0 2.4cqw,rgba(122,34,34,.06) 2.4cqw 4.8cqw);display:grid;place-items:center}
-.plate.empty .frame::before{display:none}
-.plate.empty img{display:none}
-.wanted{font-family:var(--f-old);font-style:italic;text-align:center;padding:3cqw;color:var(--ink-soft);font-size:3.6cqw;line-height:1.3}
-.wanted b{display:block;font-family:var(--f-sc);font-style:normal;font-weight:400;letter-spacing:.1em;font-size:4.6cqw;color:var(--oxblood);margin-bottom:1cqw}
-.plate:not(.empty) .wanted{display:none}
-.ph-tools{position:absolute;top:2cqw;right:2cqw;z-index:5;display:none;gap:1cqw}
-body.can-edit .ph-tools{display:flex}
-.ph-tools button{font:600 2.6cqw/1 var(--f-body);background:var(--ink);color:var(--cream);border:0;padding:1.4cqw 2.2cqw;border-radius:99px;cursor:pointer}
-.ph-tools button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.ph-tools .reset{display:none;background:var(--oxblood)}
-.plate.overridden .ph-tools .reset{display:inline-block}
-
-/* cover */
-.page.cover .pi,.page.backcover .pi{background-color:var(--leather);
-  background-image:radial-gradient(ellipse 120% 100% at 40% 35%,rgba(255,255,255,.06),transparent 60%),radial-gradient(ellipse 120% 120% at 50% 50%,transparent 60%,rgba(0,0,0,.45)),
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");color:var(--gold)}
-.goldframe{position:absolute;inset:6cqw;border:.5cqw solid var(--gold);outline:.25cqw solid var(--gold);outline-offset:1.4cqw;opacity:.85;pointer-events:none}
-.goldframe::before,.goldframe::after{content:"✦";position:absolute;left:50%;transform:translateX(-50%);font-size:4cqw;color:var(--gold);background:var(--leather);padding:0 2cqw}
-.goldframe::before{top:-3.1cqw}.goldframe::after{bottom:-3.1cqw}
-.cover .content,.backcover .content{gap:2.6cqw;color:var(--gold);text-shadow:0 .2cqw 0 rgba(0,0,0,.5)}
-.pres{font-family:var(--f-sc);letter-spacing:.24em;font-size:3.2cqw}
-.t1{font-family:var(--f-old);font-style:italic;font-size:8cqw;line-height:1}
-.t2{font-family:var(--f-sc);font-size:15.5cqw;line-height:.9;letter-spacing:.03em}
-.t3{font-family:var(--f-old);font-size:9.4cqw;line-height:1}
-.goldbird{width:44cqw;aspect-ratio:600/400;background:var(--gold);-webkit-mask:url(img/birdonly.png) center/contain no-repeat;mask:url(img/birdonly.png) center/contain no-repeat;margin-block:1cqw}
-.meta{font-family:var(--f-sc);letter-spacing:.14em;font-size:3.1cqw;line-height:1.6}
-
-/* acts: old playbill */
-.act .content{inset:9cqw;border:.5cqw solid var(--ink);outline:.2cqw solid var(--ink);outline-offset:-1.6cqw;padding:7cqw 6cqw;justify-content:center;align-items:center;text-align:center;gap:2.6cqw}
-.act .num{font-family:var(--f-sc);letter-spacing:.3em;font-size:3.6cqw;color:var(--oxblood)}
-.act .who{font-family:var(--f-sc);font-size:13cqw;line-height:.9}
-.act .epi{font-family:var(--f-old);font-style:italic;font-size:6.2cqw;line-height:1.1;color:var(--oxblood);text-wrap:balance}
-.act .plate{width:36cqw;height:44cqw;flex:none}
-.act .row .plate{width:auto;height:40cqw}
-
-/* misc pieces */
-.toc{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2.4cqw}
-.toc button{all:unset;cursor:pointer;display:flex;align-items:baseline;gap:2cqw;width:100%;box-sizing:border-box;font-family:var(--f-body);font-size:4.2cqw;line-height:1.25}
-.toc button::after{content:"";order:2;flex:1;border-bottom:.35cqw dotted var(--ink-soft);transform:translateY(-.8cqw)}
-.toc button span{pointer-events:none}
-.toc .tm{order:3;font-family:var(--f-old);font-style:italic;color:var(--oxblood);white-space:nowrap}
-.toc button:hover,.toc button:focus-visible{color:var(--oxblood)}
-.toc button:focus-visible{outline:2px solid var(--oxblood);outline-offset:3px}
-.slip{background:#fffaf0;padding:3cqw 4cqw;font-family:var(--f-old);font-size:3.8cqw;transform:rotate(-1.6deg);box-shadow:0 1cqw 2cqw rgba(60,35,10,.25);align-self:stretch;text-align:left}
-.slip .line{display:block;border-bottom:.3cqw solid var(--ink);height:7cqw;font-style:italic;font-size:5.4cqw;color:var(--oxblood)}
-.bands{font-family:var(--f-old);text-align:center;line-height:1.25;display:flex;flex-wrap:wrap;justify-content:center;gap:.6cqw 3cqw}
-.bands span:nth-child(odd){font-size:4.4cqw}
-.bands span:nth-child(even){font-size:3.7cqw;font-style:italic;color:var(--oxblood)}
-.hoax{border:1cqw double var(--ink);padding:4cqw;text-align:center;background:rgba(255,250,235,.5);transform:rotate(-1deg)}
-.hoax .g{font-family:var(--f-sc);letter-spacing:.2em;font-size:2.9cqw}
-.hoax .t{font-family:var(--f-old);font-size:7cqw;line-height:1.05;margin:2cqw 0}
-.hoax .d{font-family:var(--f-old);font-style:italic;color:var(--oxblood);font-size:4.4cqw}
-.figs{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;text-align:center}
-.figs b{display:block;font-family:var(--f-old);font-weight:400;font-size:6.2cqw;color:var(--oxblood);font-variant-numeric:lining-nums tabular-nums}
-.figs span{font-size:3.1cqw;line-height:1.2;display:block;color:var(--ink-soft)}
-.prompt{display:flex;flex-direction:column;gap:2.6cqw}
-.prompt div{font-family:var(--f-old);font-size:4.8cqw;line-height:1.25;padding-bottom:2.2cqw;border-bottom:.25cqw solid rgba(43,33,25,.35)}
-.prompt div i{color:var(--oxblood)}
-.notes{border:.3cqw solid var(--ink);padding:3.4cqw 4cqw;background:rgba(255,250,235,.45);font-size:3.9cqw;line-height:1.4;white-space:pre-line}
-.notes h3{white-space:normal;margin-bottom:1.2cqw;color:var(--oxblood)}
-.collage{position:relative;flex:1;min-height:0}
-.collage .plate{position:absolute}
-.steps{counter-reset:s;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3cqw}
-.steps li{counter-increment:s;display:grid;grid-template-columns:9cqw 1fr;gap:2.4cqw;align-items:baseline;font-size:4.6cqw;line-height:1.3}
-.steps li::before{content:counter(s,upper-roman) ".";font-family:var(--f-old);color:var(--oxblood);font-size:5cqw;text-align:right}
-
-/* wide (one slide over two pages) */
-.wide-inner{position:absolute;top:0;bottom:0;width:200cqw}
-.half-l .wide-inner{left:0}
-.half-r .wide-inner{left:-100cqw}
-.wide-inner .content{inset:9cqw 8cqw 10cqw}
-.wide .pi::after{opacity:.5}
-
-/* editing */
-body.editing .pi [data-eid]{outline:.3cqw dashed rgba(122,34,34,.5);outline-offset:.6cqw;cursor:text}
-body.editing .pi [data-eid]:focus{outline:.4cqw solid var(--oxblood);background:rgba(195,154,69,.15)}
-
-/* bar */
-.bar{height:var(--bar);flex:none;display:flex;align-items:center;gap:10px;padding-bottom:env(safe-area-inset-bottom,0px);font-family:var(--f-body);color:var(--cream);font-size:15px}
-.bar button{font:500 14px/1 var(--f-body);background:transparent;color:var(--cream);border:1px solid rgba(251,242,220,.35);border-radius:99px;padding:9px 14px;cursor:pointer;white-space:nowrap}
-.bar button:hover{border-color:var(--gold);color:var(--gold)}
-.bar button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.bar button:disabled{opacity:.35;cursor:default}
-.bar button[aria-pressed="true"]{background:var(--gold);color:var(--ink);border-color:var(--gold)}
-.bar .where{flex:1;min-width:0;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--f-old);font-style:italic}
-.bar .where b{font-style:normal;font-family:var(--f-sc);letter-spacing:.08em;color:var(--gold);font-weight:400}
-.bar .clock{font-variant-numeric:tabular-nums}
-.bar .edit{display:none}
-body.can-edit .bar .edit{display:inline-block}
-.toast{position:fixed;left:50%;bottom:calc(var(--bar) + 14px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--cream);color:var(--ink);font:500 14px/1.35 var(--f-body);padding:10px 16px;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.4);z-index:50;max-width:min(90vw,460px);text-align:center}
-@media (max-width:640px){.bar .hide-s{display:none}.bar{gap:6px}.bar button{padding:8px 11px}}
-#src{display:none}
-.loading{color:var(--cream);font-family:var(--f-old);font-style:italic}
-</style>
 
 <div class="app">
   <div class="stage" id="stage"><div id="bookbox"><div id="book"><p class="loading">Het boek wordt opengeslagen…</p></div></div></div>
@@ -210,14 +47,14 @@ body.can-edit .bar .edit{display:inline-block}
 <div class="page blank"><div class="pi"></div></div>
 
 <div class="page" data-key="welkom" data-label="Welkom"><div class="pi"><div class="content center">
-  <div class="chap">20u00 · Inkom</div>
-  <h2>Schrijf je naam op een <i>briefje</i></h2>
+  <!-- <div class="chap">20u00 · Inkom</div> -->
+  <h2>Schrijf je naam op een <i>papierken</i></h2>
   <ol class="steps" style="text-align:left">
-    <li>Schrijf je naam op een briefje.</li>
+    <li>Schrijf je naam op een papier.</li>
     <li>Steek het in de pot.</li>
-    <li>Haal je drankje. Santé!</li>
+    <li>Santé!</li>
   </ol>
-  <div class="slip">Naam:<span class="line">Jan Oemta</span></div>
+  <!-- <div class="slip">Naam:<span class="line">Oemtanees #01</span></div> -->
 </div></div></div>
 
 <div class="page" data-key="programma" data-label="Programma"><div class="pi"><div class="content">
@@ -225,26 +62,25 @@ body.can-edit .bar .edit{display:inline-block}
   <h2>Vanavond</h2>
   <div class="orn">❦</div>
   <ul class="toc">
-    <li><button data-goto="2"><span>Inkom, drank &amp; briefjes</span><span class="tm">20u00</span></button></li>
-    <li><button data-goto="4"><span>Het Sprookje</span><span class="tm">20u30</span></button></li>
-    <li><button data-goto="29"><span>Ideeën met pen en papier</span><span class="tm">20u45</span></button></li>
-    <li><button data-goto="32"><span>Sven, de Financiële Temmer</span><span class="tm">21u00</span></button></li>
-    <li><button data-goto="38"><span>Heiko &amp; Leonie</span><span class="tm">21u20</span></button></li>
+    <li><button data-goto="2"><span>start &amp;</span><span class="tm">20u00</span></button></li>
+    <li><button data-goto="4"><span>Den geschiedenis</span><span class="tm">20u30</span></button></li>
+    <li><button data-goto="30"><span>Sven, de Financiële Temmer</span><span class="tm">20u45</span></button></li>
+    <li><button data-goto="36"><span>Heiko &amp; Leonie</span><span class="tm">21u05</span></button></li>
+    <li><button data-goto="41"><span>Ideeën met pen en papier</span><span class="tm">21u30</span></button></li>
     <li><button data-goto="44"><span>Houdini Frank</span><span class="tm">21u45</span></button></li>
     <li><button data-goto="46"><span>Praktisch &amp; santé</span><span class="tm">21u55</span></button></li>
   </ul>
 </div></div></div>
 
-<div class="page act" data-key="akte1" data-label="Het Sprookje"><div class="pi"><div class="content">
+<div class="page act" data-key="akte1" data-label="Den geschiedenis"><div class="pi"><div class="content">
   <div class="num">Akte I</div>
-  <div class="who">Het Sprookje</div>
+  <div class="who" style="font-size:11cqw">Den geschiedenis</div>
   <div class="orn">❦</div>
   <div class="epi">Er was eens, in Ertvelde…</div>
   <img src="img/bird.png" alt="Cartoon van de Oemtabird: Toen ik wakker werd, kon ik vliegen" style="width:56cqw;mix-blend-mode:multiply;opacity:.9">
 </div></div></div>
 
 <div class="page" data-key="sarco" data-label="Voor het begin"><div class="pi"><div class="content">
-  <div class="chap">Hoofdstuk I</div>
   <h2>Mei '68 waait tot in <i>Ertvelde</i></h2>
   <div class="orn">❦</div>
   <p class="dc">Jonge Ertveldenaren vinden de chiro te braaf. Paul Vergauwe en Walter Cuyt beginnen <b>Sarco</b>, een jeugdatelier in de schuurtjes naast het oude kerkhof.</p>
@@ -254,12 +90,10 @@ body.can-edit .bar .edit{display:inline-block}
 <div class="page" data-key="sarco-plaat" data-label="Voor het begin"><div class="pi"><div class="content">
   <figure class="plate empty grow" data-slot="sarco">
     <div class="frame"><img alt=""><div class="wanted"><b>Foto gezocht</b>Het jeugdatelier Sarco, aan het oude kerkhof</div></div>
-    <figcaption>Het jeugdatelier Sarco</figcaption>
   </figure>
 </div></div></div>
 
 <div class="page" data-key="opening" data-label="De opening"><div class="pi"><div class="content center">
-  <div class="chap">Hoofdstuk II</div>
   <div class="year">oudejaarsavond</div>
   <h2 style="font-size:12cqw">31 december 1975</h2>
   <div class="rule"></div>
@@ -269,12 +103,10 @@ body.can-edit .bar .edit{display:inline-block}
 <div class="page" data-key="opening-plaat" data-label="De opening"><div class="pi"><div class="content">
   <figure class="plate grow" data-slot="verkleed">
     <div class="frame"><img src="img/verkleed.jpg" alt="Drie jonge Oemtatagangers verkleed in kleurrijke kostuums"></div>
-    <figcaption>Uit het fotoalbum. Wie herkent zich?</figcaption>
   </figure>
 </div></div></div>
 
 <div class="page" data-key="vzw" data-label="1976"><div class="pi"><div class="content">
-  <div class="chap">Hoofdstuk II</div>
   <h2>1976</h2>
   <ul class="list">
     <li><b>Januari.</b> In de oude bakkerij ernaast opent de Wereldwinkel.</li>
@@ -282,19 +114,17 @@ body.can-edit .bar .edit{display:inline-block}
   </ul>
   <div class="orn">❦</div>
   <p class="note">„Das Leben ist ein Oemtata.”</p>
-  <p class="small" style="text-align:center">De naam komt uit een Nero-strip. Zegt men toch.</p>
+  <p class="small" style="text-align:center">De naam komt uit een Nero-strip. Pijzen we toch.</p>
 </div></div></div>
 
 <div class="page" data-key="praatcafe" data-label="Het praatcafé"><div class="pi"><div class="content">
-  <div class="chap">Hoofdstuk III</div>
   <h2>Het praatcafé</h2>
   <figure class="plate grow" data-slot="praatcafe">
     <div class="frame"><img src="img/praatcafe.jpg" alt="Een groep jongeren rond een tafel in het café"></div>
-    <figcaption>Werkgroepen, thema-avonden en één frank per pint voor het Zuiden.</figcaption>
   </figure>
 </div></div></div>
 
-<div class="page" data-key="aprilgrap" data-label="De aprilgrap"><div class="pi"><div class="content center">
+<!-- <div class="page" data-key="aprilgrap" data-label="De aprilgrap"><div class="pi"><div class="content center">
   <div class="chap">Anekdote</div>
   <div class="hoax">
     <div class="g">Gemeente Ertvelde · Uitnodiging</div>
@@ -302,41 +132,37 @@ body.can-edit .bar .edit{display:inline-block}
     <div class="d">1 april 1977</div>
   </div>
   <p class="lead">Heel Ertvelde kwam kijken. Er was geen zwembad.</p>
-</div></div></div>
+</div></div></div> -->
 
 <div class="page" data-key="jaren80" data-label="Jaren '80"><div class="pi"><div class="content center">
-  <div class="chap">Hoofdstuk IV</div>
   <h2>Van praatcafé naar <i>muziekcafé</i></h2>
   <div class="orn">❦</div>
   <ul class="list" style="text-align:left">
-    <li>Optredens van namen die later groot werden</li>
-    <li>Kermisaffiches tot ver buiten Evergem</li>
-    <li>Het fuifzaaltje en de repetitiezolder</li>
+    <li>Repitiekot</li>
+    <li>Klein zaalken (zonder echte isolatie feitelijk)</li>
   </ul>
 </div></div></div>
 
 <div class="page" data-key="podium" data-label="Op het podium"><div class="pi"><div class="content center">
-  <div class="chap">Op dit podium stonden</div>
+  <!-- <div class="chap">Op ons podium stonden</div> -->
   <div class="rule"></div>
   <div class="bands">
-    <span>The Chop Choy Shaggies</span><span>Eton Crop</span><span>The Steve McQueens</span><span>Annalise</span><span>Dan Donovan</span><span>Kaz Lux</span><span>Drs P</span><span>Tom Wolf</span><span>Mike Silver</span><span>Katastroof</span><span>Jan Muës</span><span>The Nozems</span><span>The Mudgang</span><span>Raised Four</span>
+    <span>The Chop Choy Shaggies</span><span>Eton Crop</span><span>The Steve McQueens</span><span>Annalise</span><span>Dan Donovan</span><span>Kaz Lux</span><span>Drs P</span><span>Tom Wolf</span><span>Mike Silver</span><span>Katastroof</span><span>Jan Muës</span><span>The Nozems</span><span>The Mudgang</span><span>Raised Four</span><span>Luc De Vos</span><span>Fleddy Melculy</span><span>Equal Idiots</span><span>Gnome</span><span>Meskerem Mees</span><span>The Kids</span><span>Funeral Dress</span><span>Hypochristmutreefuzz</span><span>Arisa</span><span>La Jungle</span><span>Stadt</span><span>Green Lung</span>
   </div>
   <div class="rule"></div>
-  <p class="small">… en volgens het boekje van 1996 ook James Taylor.</p>
+  <!-- <p class="small">… en volgens het boekje van 1996 ook James Taylor.</p> -->
 </div></div></div>
 
 <div class="page" data-key="kermis-plaat" data-label="Jaren '80"><div class="pi"><div class="content">
   <figure class="plate empty grow" data-slot="kermis80">
     <div class="frame"><img alt=""><div class="wanted"><b>Affiche gezocht</b>Een kermisaffiche uit de jaren '80</div></div>
-    <figcaption>Een kermisaffiche</figcaption>
   </figure>
 </div></div></div>
 
 <div class="page" data-key="twintig" data-label="1996"><div class="pi"><div class="content">
-  <div class="chap">Hoofdstuk V · 1996</div>
+  <div class="year">1996</div>
   <figure class="plate contain grow" data-slot="boekje20">
     <div class="frame"><img src="img/boekje20.jpg" alt="Eerste pagina van het jubileumboekje 20 jaar vzw Oemtata"></div>
-    <figcaption>Het jubileumboekje, getikt op de typemachine.</figcaption>
   </figure>
 </div></div></div>
 
@@ -352,7 +178,6 @@ body.can-edit .bar .edit{display:inline-block}
 </div></div></div>
 
 <div class="page" data-key="rockabilly" data-label="2008"><div class="pi"><div class="content">
-  <div class="chap">Hoofdstuk VI</div>
   <div class="year">2008</div>
   <h2>Vetkuiven en chroom</h2>
   <p style="text-align:center">De Oemtata wordt thuishaven van de rockabilly-scene.</p>
@@ -364,12 +189,10 @@ body.can-edit .bar .edit{display:inline-block}
 <div class="page" data-key="rockabilly-plaat" data-label="2008"><div class="pi"><div class="content">
   <figure class="plate contain grow" data-slot="rockabilly">
     <div class="frame"><img src="img/rockabilly.jpg" alt="Flyer Rockabilly Day Weekender 22-23-24 augustus 2008"></div>
-    <figcaption>Het eerste Rockabilly Day Weekender</figcaption>
   </figure>
 </div></div></div>
 
 <div class="page" data-key="earthfield" data-label="2010"><div class="pi"><div class="content">
-  <div class="chap">Hoofdstuk VII</div>
   <div class="year">2010</div>
   <h2>Rock Earthfield</h2>
   <p style="text-align:center">Een gratis festival in hartje Ertvelde.</p>
@@ -382,12 +205,10 @@ body.can-edit .bar .edit{display:inline-block}
 <div class="page" data-key="earthfield-plaat" data-label="2010"><div class="pi"><div class="content">
   <figure class="plate grow" data-slot="re_publiek">
     <div class="frame"><img src="img/re_publiek.jpg" alt="Publiek op Rock Earthfield"></div>
-    <figcaption>Gratis, en toch onbetaalbaar.</figcaption>
   </figure>
 </div></div></div>
 
 <div class="page" data-key="tienjaren" data-label="2011 – 2015"><div class="pi"><div class="content">
-  <div class="chap">Hoofdstuk VII</div>
   <h2>Kunst, poëzie en een <i>pluim</i></h2>
   <div class="orn">❦</div>
   <ul class="list">
@@ -399,13 +220,12 @@ body.can-edit .bar .edit{display:inline-block}
 
 <div class="page" data-key="tienjaren-plaat" data-label="2011 – 2015"><div class="pi"><div class="content">
   <div class="row grow">
-    <figure class="plate contain" data-slot="dellarte2015"><div class="frame"><img src="img/dellarte2015.jpg" alt="Affiche Oemtadell'Arte 2015"></div><figcaption>Oemtadell'Arte</figcaption></figure>
-    <figure class="plate contain" data-slot="ww_heropening"><div class="frame"><img src="img/ww_heropening.jpg" alt="Affiche heropening Wereldwinkel"></div><figcaption>De Wereldwinkel</figcaption></figure>
+    <figure class="plate contain" data-slot="dellarte2015"><div class="frame"><img src="img/dellarte2015.jpg" alt="Affiche Oemtadell'Arte 2015"></div></figure>
+    <figure class="plate contain" data-slot="ww_heropening"><div class="frame"><img src="img/ww_heropening.jpg" alt="Affiche heropening Wereldwinkel"></div></figure>
   </div>
 </div></div></div>
 
 <div class="page" data-key="bouwt" data-label="2017"><div class="pi"><div class="content">
-  <div class="chap">Hoofdstuk VIII</div>
   <div class="year">2017</div>
   <h2>Oemtata bouwt</h2>
   <p style="text-align:center">Een nieuwe zaal voor 120 man, met stenen van een oude boerderij op Stoepe.</p>
@@ -420,7 +240,6 @@ body.can-edit .bar .edit{display:inline-block}
 <div class="page" data-key="bouwt-plaat" data-label="2017"><div class="pi"><div class="content">
   <figure class="plate grow" data-slot="bouwt_groep">
     <div class="frame"><img src="img/bouwt_groep.jpg" alt="Vrijwilligers voor de nieuwe gevel"></div>
-    <figcaption>De gevel staat, april 2017.</figcaption>
   </figure>
   <p class="note">De aannemer leerde zijn vrouw 41 jaar eerder kennen… in de Oemtata.</p>
 </div></div></div>
@@ -433,7 +252,6 @@ body.can-edit .bar .edit{display:inline-block}
 </div></div></div>
 
 <div class="page" data-key="nieuwegeneratie" data-label="De nieuwe lichting"><div class="pi"><div class="content">
-  <div class="chap">Hoofdstuk IX</div>
   <h2>De nieuwe lichting</h2>
   <div class="collage">
     <figure class="plate contain" data-slot="miava" style="left:0;top:0;width:46%;height:100%;transform:rotate(-2deg)"><div class="frame"><img src="img/miava.jpg" alt="Affiche Pre Newyear Rock Night"></div></figure>
@@ -446,7 +264,6 @@ body.can-edit .bar .edit{display:inline-block}
   <div class="year">2026</div>
   <figure class="plate grow" data-slot="gevel">
     <div class="frame"><img src="img/gevel.jpg" alt="Vrijwilligers voor de verlichte gevel van de Oemtata"></div>
-    <figcaption>Vijftig jaar, en nog altijd open.</figcaption>
   </figure>
 </div></div></div>
 
@@ -455,28 +272,6 @@ body.can-edit .bar .edit{display:inline-block}
   <p class="note" style="font-size:6.4cqw">En ze leefden nog lang en eigenzinnig.</p>
   <div class="rule"></div>
   <h2 style="font-size:14cqw"><i>Santé!</i></h2>
-</div></div></div>
-
-<div class="page" data-key="ideeen" data-label="Ideeën"><div class="pi"><div class="content center">
-  <div class="chap">Tussenspel</div>
-  <h2>Pak je pen</h2>
-  <div class="orn">❦</div>
-  <ol class="steps" style="text-align:left">
-    <li>Schrijf één idee voor een nieuwe activiteit op papier.</li>
-    <li>Zet je naam erbij.</li>
-    <li>Wie uit de pot getrokken wordt, vertelt zijn idee.</li>
-  </ol>
-</div></div></div>
-
-<div class="page" data-key="ideeen-prompts" data-label="Ideeën"><div class="pi"><div class="content">
-  <div class="chap">Om op gang te komen</div>
-  <div class="prompt">
-    <div>Een avond die nog <i>niet bestaat</i></div>
-    <div>Iets voor de <i>buren</i></div>
-    <div>Iets voor <i>jong én oud</i></div>
-    <div>Iets in de <i>nieuwe zaal</i></div>
-    <div>Iets van vroeger dat <i>terug mag</i></div>
-  </div>
 </div></div></div>
 
 <div class="page blank"><div class="pi"></div></div>
@@ -550,6 +345,28 @@ body.can-edit .bar .edit{display:inline-block}
   <h2>Teambuilding</h2>
   <div class="orn">❦</div>
   <div class="notes"><h3>Het plan</h3>Hier komt het idee.</div>
+</div></div></div>
+
+<div class="page" data-key="ideeen" data-label="Ideeën"><div class="pi"><div class="content center">
+  <div class="chap">Tussenspel</div>
+  <h2>Pak je pen</h2>
+  <div class="orn">❦</div>
+  <ol class="steps" style="text-align:left">
+    <li>Schrijf één idee voor een nieuwe activiteit op papier.</li>
+    <li>Zet je naam erbij.</li>
+    <li>Wie uit de pot getrokken wordt, vertelt zijn idee.</li>
+  </ol>
+</div></div></div>
+
+<div class="page" data-key="ideeen-prompts" data-label="Ideeën"><div class="pi"><div class="content">
+  <div class="chap">Om op gang te komen</div>
+  <div class="prompt">
+    <div>Een avond die nog <i>niet bestaat</i></div>
+    <div>Iets voor de <i>buren</i></div>
+    <div>Iets voor <i>jong én oud</i></div>
+    <div>Iets in de <i>nieuwe zaal</i></div>
+    <div>Iets van vroeger dat <i>terug mag</i></div>
+  </div>
 </div></div></div>
 
 <div class="page blank"><div class="pi"></div></div>
