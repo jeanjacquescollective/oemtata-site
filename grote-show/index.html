@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>De Grote Oemta Bedankingsshow</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap">
+<style>
+/* Layout: an old clothbound book on a dark café table; soft paper pages that bend; type sized in container units of each page */
+:root{
+  --table:#17110d; --table-glow:#3b2a1c;
+  --paper:#efe3c6; --blank:#f8f3e7;
+  --ink:#2b2119; --ink-soft:#6e5c46; --oxblood:#7a2222; --gold:#c39a45; --leather:#3a1513; --cream:#fbf2dc;
+  --f-old:"IM Fell English", "EB Garamond", Georgia, serif;
+  --f-sc:"IM Fell English SC", "IM Fell English", Georgia, serif;
+  --f-body:"EB Garamond", Garamond, Georgia, "Times New Roman", serif;
+  --bar:56px;
+  color-scheme:dark;
+}
+html,body{height:100%}
+body{margin:0;color:var(--cream);font-family:var(--f-body);overflow:hidden;box-sizing:border-box;
+  background:radial-gradient(ellipse 75% 65% at 50% 45%,var(--table-glow),var(--table) 72%);background-color:var(--table);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.app{height:100%;display:flex;flex-direction:column}
+.stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding-block:14px;box-sizing:border-box}
+#bookbox{max-width:100%}
+
+/* ---------- page base ---------- */
+.page{background:var(--paper);overflow:hidden}
+.pi{position:absolute;inset:0;container-type:size;overflow:hidden;color:var(--ink);
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(ellipse 120% 100% at 50% 50%,transparent 60%,rgba(120,84,40,.22) 100%),
+    radial-gradient(circle at 82% 14%,rgba(150,105,50,.10) 0 2.2cqw,transparent 3cqw),
+    radial-gradient(circle at 14% 88%,rgba(150,105,50,.08) 0 1.6cqw,transparent 2.6cqw),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .33 0 0 0 0 .18 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.L .pi::after,.R .pi::after{content:"";position:absolute;inset:0;pointer-events:none}
+.L .pi::after{background:linear-gradient(270deg,rgba(60,35,10,.28),rgba(60,35,10,.06) 5%,transparent 12%)}
+.R .pi::after{background:linear-gradient(90deg,rgba(60,35,10,.28),rgba(60,35,10,.06) 5%,transparent 12%)}
+.page.blank .pi{background:var(--blank);background-image:radial-gradient(ellipse 130% 110% at 50% 50%,transparent 70%,rgba(120,84,40,.10) 100%)}
+
+.content{position:absolute;inset:11cqw 10cqw 13cqw;display:flex;flex-direction:column;gap:3.4cqw;font-size:4.2cqw;line-height:1.42}
+.content.center{justify-content:center;align-items:center;text-align:center}
+.content p{margin:0}
+.rhead{position:absolute;top:5cqw;left:0;right:0;text-align:center;font-family:var(--f-sc);font-size:2.7cqw;letter-spacing:.18em;color:var(--ink-soft)}
+.folio{position:absolute;bottom:5.5cqw;left:0;right:0;text-align:center;font-family:var(--f-old);font-size:3cqw;color:var(--ink-soft)}
+.chap{font-family:var(--f-sc);font-size:3.2cqw;letter-spacing:.22em;color:var(--oxblood);text-align:center}
+h2{font-family:var(--f-old);font-weight:400;font-size:8.6cqw;line-height:1.02;margin:0;text-align:center;text-wrap:balance}
+h2 i{color:var(--oxblood)}
+h3{font-family:var(--f-sc);font-weight:400;font-size:4.6cqw;letter-spacing:.06em;margin:0;text-wrap:balance}
+.year{font-family:var(--f-old);font-style:italic;font-size:5.4cqw;color:var(--oxblood);text-align:center;line-height:1}
+.orn{text-align:center;font-family:var(--f-old);color:var(--oxblood);font-size:4.6cqw;line-height:1;letter-spacing:.6em}
+.rule{height:0;border-top:.3cqw solid var(--ink);border-bottom:.3cqw solid var(--ink);padding-top:.7cqw;width:30cqw;align-self:center}
+.dc::first-letter{font-family:var(--f-old);float:left;font-size:13cqw;line-height:.82;padding:1cqw 1.6cqw 0 0;color:var(--oxblood)}
+.lead{font-size:4.8cqw;line-height:1.4}
+.it{font-style:italic}
+.small{font-size:3.4cqw;color:var(--ink-soft)}
+.note{font-family:var(--f-old);font-style:italic;font-size:4.6cqw;line-height:1.35;text-align:center;color:var(--ink)}
+.grow{flex:1;min-height:0}
+.row{display:flex;gap:4cqw;min-height:0}
+.row>*{flex:1;min-width:0}
+ul.list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2.2cqw}
+ul.list li{padding-left:5cqw;position:relative}
+ul.list li::before{content:"❧";position:absolute;left:0;color:var(--oxblood)}
+
+/* plates (photos) */
+.plate{margin:0;display:flex;flex-direction:column;gap:1.6cqw;min-height:0;position:relative}
+.plate .frame{position:relative;flex:1;min-height:0;padding:1.4cqw;border:.3cqw solid var(--ink);background:rgba(255,250,235,.35)}
+.plate .frame::before{content:"";position:absolute;inset:.7cqw;border:.15cqw solid rgba(43,33,25,.5);pointer-events:none}
+.plate img{display:block;width:100%;height:100%;object-fit:cover;filter:sepia(.18) contrast(.97)}
+.plate.contain .frame{border:0;padding:0;background:none}
+.plate.contain .frame::before{display:none}
+.plate.contain img{object-fit:contain;filter:sepia(.12) drop-shadow(0 .6cqw 1.2cqw rgba(60,35,10,.3))}
+.plate figcaption{font-family:var(--f-old);font-size:3.2cqw;line-height:1.3;text-align:center;color:var(--ink-soft)}
+.plate figcaption .pl{font-family:var(--f-sc);letter-spacing:.12em;color:var(--ink);margin-right:1cqw}
+.plate.oval .frame{border-radius:50%;padding:0;border:.5cqw solid var(--gold);overflow:hidden}
+.plate.oval .frame::before{display:none}
+.plate.empty .frame{border:.35cqw dashed var(--ink-soft);background:repeating-linear-gradient(-45deg,transparent 0 2.4cqw,rgba(122,34,34,.06) 2.4cqw 4.8cqw);display:grid;place-items:center}
+.plate.empty .frame::before{display:none}
+.plate.empty img{display:none}
+.wanted{font-family:var(--f-old);font-style:italic;text-align:center;padding:3cqw;color:var(--ink-soft);font-size:3.6cqw;line-height:1.3}
+.wanted b{display:block;font-family:var(--f-sc);font-style:normal;font-weight:400;letter-spacing:.1em;font-size:4.6cqw;color:var(--oxblood);margin-bottom:1cqw}
+.plate:not(.empty) .wanted{display:none}
+.ph-tools{position:absolute;top:2cqw;right:2cqw;z-index:5;display:none;gap:1cqw}
+body.can-edit .ph-tools{display:flex}
+.ph-tools button{font:600 2.6cqw/1 var(--f-body);background:var(--ink);color:var(--cream);border:0;padding:1.4cqw 2.2cqw;border-radius:99px;cursor:pointer}
+.ph-tools button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.ph-tools .reset{display:none;background:var(--oxblood)}
+.plate.overridden .ph-tools .reset{display:inline-block}
+
+/* cover */
+.page.cover .pi,.page.backcover .pi{background-color:var(--leather);
+  background-image:radial-gradient(ellipse 120% 100% at 40% 35%,rgba(255,255,255,.06),transparent 60%),radial-gradient(ellipse 120% 120% at 50% 50%,transparent 60%,rgba(0,0,0,.45)),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");color:var(--gold)}
+.goldframe{position:absolute;inset:6cqw;border:.5cqw solid var(--gold);outline:.25cqw solid var(--gold);outline-offset:1.4cqw;opacity:.85;pointer-events:none}
+.goldframe::before,.goldframe::after{content:"✦";position:absolute;left:50%;transform:translateX(-50%);font-size:4cqw;color:var(--gold);background:var(--leather);padding:0 2cqw}
+.goldframe::before{top:-3.1cqw}.goldframe::after{bottom:-3.1cqw}
+.cover .content,.backcover .content{gap:2.6cqw;color:var(--gold);text-shadow:0 .2cqw 0 rgba(0,0,0,.5)}
+.pres{font-family:var(--f-sc);letter-spacing:.24em;font-size:3.2cqw}
+.t1{font-family:var(--f-old);font-style:italic;font-size:8cqw;line-height:1}
+.t2{font-family:var(--f-sc);font-size:15.5cqw;line-height:.9;letter-spacing:.03em}
+.t3{font-family:var(--f-old);font-size:9.4cqw;line-height:1}
+.goldbird{width:44cqw;aspect-ratio:600/400;background:var(--gold);-webkit-mask:url(img/birdonly.png) center/contain no-repeat;mask:url(img/birdonly.png) center/contain no-repeat;margin-block:1cqw}
+.meta{font-family:var(--f-sc);letter-spacing:.14em;font-size:3.1cqw;line-height:1.6}
+
+/* acts: old playbill */
+.act .content{inset:9cqw;border:.5cqw solid var(--ink);outline:.2cqw solid var(--ink);outline-offset:-1.6cqw;padding:7cqw 6cqw;justify-content:center;align-items:center;text-align:center;gap:2.6cqw}
+.act .num{font-family:var(--f-sc);letter-spacing:.3em;font-size:3.6cqw;color:var(--oxblood)}
+.act .who{font-family:var(--f-sc);font-size:13cqw;line-height:.9}
+.act .epi{font-family:var(--f-old);font-style:italic;font-size:6.2cqw;line-height:1.1;color:var(--oxblood);text-wrap:balance}
+.act .plate{width:36cqw;height:44cqw;flex:none}
+.act .row .plate{width:auto;height:40cqw}
+
+/* misc pieces */
+.toc{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2.4cqw}
+.toc button{all:unset;cursor:pointer;display:flex;align-items:baseline;gap:2cqw;width:100%;box-sizing:border-box;font-family:var(--f-body);font-size:4.2cqw;line-height:1.25}
+.toc button::after{content:"";order:2;flex:1;border-bottom:.35cqw dotted var(--ink-soft);transform:translateY(-.8cqw)}
+.toc button span{pointer-events:none}
+.toc .tm{order:3;font-family:var(--f-old);font-style:italic;color:var(--oxblood);white-space:nowrap}
+.toc button:hover,.toc button:focus-visible{color:var(--oxblood)}
+.toc button:focus-visible{outline:2px solid var(--oxblood);outline-offset:3px}
+.slip{background:#fffaf0;padding:3cqw 4cqw;font-family:var(--f-old);font-size:3.8cqw;transform:rotate(-1.6deg);box-shadow:0 1cqw 2cqw rgba(60,35,10,.25);align-self:stretch;text-align:left}
+.slip .line{display:block;border-bottom:.3cqw solid var(--ink);height:7cqw;font-style:italic;font-size:5.4cqw;color:var(--oxblood)}
+.bands{font-family:var(--f-old);text-align:center;line-height:1.25;display:flex;flex-wrap:wrap;justify-content:center;gap:.6cqw 3cqw}
+.bands span:nth-child(odd){font-size:4.4cqw}
+.bands span:nth-child(even){font-size:3.7cqw;font-style:italic;color:var(--oxblood)}
+.hoax{border:1cqw double var(--ink);padding:4cqw;text-align:center;background:rgba(255,250,235,.5);transform:rotate(-1deg)}
+.hoax .g{font-family:var(--f-sc);letter-spacing:.2em;font-size:2.9cqw}
+.hoax .t{font-family:var(--f-old);font-size:7cqw;line-height:1.05;margin:2cqw 0}
+.hoax .d{font-family:var(--f-old);font-style:italic;color:var(--oxblood);font-size:4.4cqw}
+.figs{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;text-align:center}
+.figs b{display:block;font-family:var(--f-old);font-weight:400;font-size:6.2cqw;color:var(--oxblood);font-variant-numeric:lining-nums tabular-nums}
+.figs span{font-size:3.1cqw;line-height:1.2;display:block;color:var(--ink-soft)}
+.prompt{display:flex;flex-direction:column;gap:2.6cqw}
+.prompt div{font-family:var(--f-old);font-size:4.8cqw;line-height:1.25;padding-bottom:2.2cqw;border-bottom:.25cqw solid rgba(43,33,25,.35)}
+.prompt div i{color:var(--oxblood)}
+.notes{border:.3cqw solid var(--ink);padding:3.4cqw 4cqw;background:rgba(255,250,235,.45);font-size:3.9cqw;line-height:1.4;white-space:pre-line}
+.notes h3{white-space:normal;margin-bottom:1.2cqw;color:var(--oxblood)}
+.collage{position:relative;flex:1;min-height:0}
+.collage .plate{position:absolute}
+.steps{counter-reset:s;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3cqw}
+.steps li{counter-increment:s;display:grid;grid-template-columns:9cqw 1fr;gap:2.4cqw;align-items:baseline;font-size:4.6cqw;line-height:1.3}
+.steps li::before{content:counter(s,upper-roman) ".";font-family:var(--f-old);color:var(--oxblood);font-size:5cqw;text-align:right}
+
+/* wide (one slide over two pages) */
+.wide-inner{position:absolute;top:0;bottom:0;width:200cqw}
+.half-l .wide-inner{left:0}
+.half-r .wide-inner{left:-100cqw}
+.wide-inner .content{inset:9cqw 8cqw 10cqw}
+.wide .pi::after{opacity:.5}
+
+/* editing */
+body.editing .pi [data-eid]{outline:.3cqw dashed rgba(122,34,34,.5);outline-offset:.6cqw;cursor:text}
+body.editing .pi [data-eid]:focus{outline:.4cqw solid var(--oxblood);background:rgba(195,154,69,.15)}
+
+/* bar */
+.bar{height:var(--bar);flex:none;display:flex;align-items:center;gap:10px;padding-bottom:env(safe-area-inset-bottom,0px);font-family:var(--f-body);color:var(--cream);font-size:15px}
+.bar button{font:500 14px/1 var(--f-body);background:transparent;color:var(--cream);border:1px solid rgba(251,242,220,.35);border-radius:99px;padding:9px 14px;cursor:pointer;white-space:nowrap}
+.bar button:hover{border-color:var(--gold);color:var(--gold)}
+.bar button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.bar button:disabled{opacity:.35;cursor:default}
+.bar button[aria-pressed="true"]{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.bar .where{flex:1;min-width:0;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--f-old);font-style:italic}
+.bar .where b{font-style:normal;font-family:var(--f-sc);letter-spacing:.08em;color:var(--gold);font-weight:400}
+.bar .clock{font-variant-numeric:tabular-nums}
+.bar .edit{display:none}
+body.can-edit .bar .edit{display:inline-block}
+.toast{position:fixed;left:50%;bottom:calc(var(--bar) + 14px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--cream);color:var(--ink);font:500 14px/1.35 var(--f-body);padding:10px 16px;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.4);z-index:50;max-width:min(90vw,460px);text-align:center}
+@media (max-width:640px){.bar .hide-s{display:none}.bar{gap:6px}.bar button{padding:8px 11px}}
+#src{display:none}
+.loading{color:var(--cream);font-family:var(--f-old);font-style:italic}
+</style>
+
+<div class="app">
+  <div class="stage" id="stage"><div id="bookbox"><div id="book"><p class="loading">Het boek wordt opengeslagen…</p></div></div></div>
+  <div class="bar">
+    <button id="prev" aria-label="Vorige pagina">◀</button>
+    <button id="tocBtn" class="hide-s">Programma</button>
+    <div class="where" id="where">Omslag</div>
+    <button id="clock" class="clock hide-s" aria-pressed="false" title="Showklok starten of pauzeren">▶ 00:00</button>
+    <button id="editBtn" class="edit hide-s" aria-pressed="false">✎ Tekst</button>
+    <button id="fs" class="hide-s" aria-label="Volledig scherm">⛶</button>
+    <button id="next" aria-label="Volgende pagina">▶</button>
+  </div>
+</div>
+<input type="file" id="file" accept="image/*" hidden>
+<div class="toast" id="toast" hidden></div>
+
+<!-- ============ PAGES in reading order. Index 0 = cover (alone, right). Odd = left, even = right. A .wide page fills two pages. ============ -->
+<div id="src">
+
+<div class="page cover" data-density="hard" data-label="Omslag"><div class="pi">
+  <div class="goldframe"></div>
+  <div class="content center">
+    <div class="pres">Vzw Oemtata presenteert</div>
+    <div class="t1">De Grote</div>
+    <div class="t2">Oemta</div>
+    <div class="t3">Bedankingsshow</div>
+    <div class="goldbird" role="img" aria-label="De Oemtabird"></div>
+    <div class="meta">Vijftig jaar · 1976 – 2026<br>Pastorijstraat 40 · Ertvelde<br>vrijdag 23 oktober</div>
+  </div>
+</div></div>
+
+<div class="page blank"><div class="pi"></div></div>
+
+<div class="page" data-key="welkom" data-label="Welkom"><div class="pi"><div class="content center">
+  <div class="chap">20u00 · Inkom</div>
+  <h2>Schrijf je naam op een <i>briefje</i></h2>
+  <ol class="steps" style="text-align:left">
+    <li>Schrijf je naam op een briefje.</li>
+    <li>Steek het in de pot.</li>
+    <li>Haal je drankje. Santé!</li>
+  </ol>
+  <div class="slip">Naam:<span class="line">Jan Oemta</span></div>
+</div></div></div>
+
+<div class="page" data-key="programma" data-label="Programma"><div class="pi"><div class="content">
+  <div class="chap">Het programma</div>
+  <h2>Vanavond</h2>
+  <div class="orn">❦</div>
+  <ul class="toc">
+    <li><button data-goto="2"><span>Inkom, drank &amp; briefjes</span><span class="tm">20u00</span></button></li>
+    <li><button data-goto="4"><span>Het Sprookje</span><span class="tm">20u30</span></button></li>
+    <li><button data-goto="29"><span>Ideeën met pen en papier</span><span class="tm">20u45</span></button></li>
+    <li><button data-goto="32"><span>Sven, de Financiële Temmer</span><span class="tm">21u00</span></button></li>
+    <li><button data-goto="38"><span>Heiko &amp; Leonie</span><span class="tm">21u20</span></button></li>
+    <li><button data-goto="44"><span>Houdini Frank</span><span class="tm">21u45</span></button></li>
+    <li><button data-goto="46"><span>Praktisch &amp; santé</span><span class="tm">21u55</span></button></li>
+  </ul>
+</div></div></div>
+
+<div class="page act" data-key="akte1" data-label="Het Sprookje"><div class="pi"><div class="content">
+  <div class="num">Akte I</div>
+  <div class="who">Het Sprookje</div>
+  <div class="orn">❦</div>
+  <div class="epi">Er was eens, in Ertvelde…</div>
+  <img src="img/bird.png" alt="Cartoon van de Oemtabird: Toen ik wakker werd, kon ik vliegen" style="width:56cqw;mix-blend-mode:multiply;opacity:.9">
+</div></div></div>
+
+<div class="page" data-key="sarco" data-label="Voor het begin"><div class="pi"><div class="content">
+  <div class="chap">Hoofdstuk I</div>
+  <h2>Mei '68 waait tot in <i>Ertvelde</i></h2>
+  <div class="orn">❦</div>
+  <p class="dc">Jonge Ertveldenaren vinden de chiro te braaf. Paul Vergauwe en Walter Cuyt beginnen <b>Sarco</b>, een jeugdatelier in de schuurtjes naast het oude kerkhof.</p>
+  <p class="it small" style="text-align:center">Sarco, van sarcofaag.</p>
+</div></div></div>
+
+<div class="page" data-key="sarco-plaat" data-label="Voor het begin"><div class="pi"><div class="content">
+  <figure class="plate empty grow" data-slot="sarco">
+    <div class="frame"><img alt=""><div class="wanted"><b>Foto gezocht</b>Het jeugdatelier Sarco, aan het oude kerkhof</div></div>
+    <figcaption>Het jeugdatelier Sarco</figcaption>
+  </figure>
+</div></div></div>
+
+<div class="page" data-key="opening" data-label="De opening"><div class="pi"><div class="content center">
+  <div class="chap">Hoofdstuk II</div>
+  <div class="year">oudejaarsavond</div>
+  <h2 style="font-size:12cqw">31 december 1975</h2>
+  <div class="rule"></div>
+  <p class="lead">Johan Van de Fonteyne opent een café in de Pastorijstraat 40.</p>
+</div></div></div>
+
+<div class="page" data-key="opening-plaat" data-label="De opening"><div class="pi"><div class="content">
+  <figure class="plate grow" data-slot="verkleed">
+    <div class="frame"><img src="img/verkleed.jpg" alt="Drie jonge Oemtatagangers verkleed in kleurrijke kostuums"></div>
+    <figcaption>Uit het fotoalbum. Wie herkent zich?</figcaption>
+  </figure>
+</div></div></div>
+
+<div class="page" data-key="vzw" data-label="1976"><div class="pi"><div class="content">
+  <div class="chap">Hoofdstuk II</div>
+  <h2>1976</h2>
+  <ul class="list">
+    <li><b>Januari.</b> In de oude bakkerij ernaast opent de Wereldwinkel.</li>
+    <li><b>Augustus.</b> De vzw Oemtata wordt opgericht. Vanaf nu staan vrijwilligers achter de toog.</li>
+  </ul>
+  <div class="orn">❦</div>
+  <p class="note">„Das Leben ist ein Oemtata.”</p>
+  <p class="small" style="text-align:center">De naam komt uit een Nero-strip. Zegt men toch.</p>
+</div></div></div>
+
+<div class="page" data-key="praatcafe" data-label="Het praatcafé"><div class="pi"><div class="content">
+  <div class="chap">Hoofdstuk III</div>
+  <h2>Het praatcafé</h2>
+  <figure class="plate grow" data-slot="praatcafe">
+    <div class="frame"><img src="img/praatcafe.jpg" alt="Een groep jongeren rond een tafel in het café"></div>
+    <figcaption>Werkgroepen, thema-avonden en één frank per pint voor het Zuiden.</figcaption>
+  </figure>
+</div></div></div>
+
+<div class="page" data-key="aprilgrap" data-label="De aprilgrap"><div class="pi"><div class="content center">
+  <div class="chap">Anekdote</div>
+  <div class="hoax">
+    <div class="g">Gemeente Ertvelde · Uitnodiging</div>
+    <div class="t">Officiële opening van het nieuwe zwembad</div>
+    <div class="d">1 april 1977</div>
+  </div>
+  <p class="lead">Heel Ertvelde kwam kijken. Er was geen zwembad.</p>
+</div></div></div>
+
+<div class="page" data-key="jaren80" data-label="Jaren '80"><div class="pi"><div class="content center">
+  <div class="chap">Hoofdstuk IV</div>
+  <h2>Van praatcafé naar <i>muziekcafé</i></h2>
+  <div class="orn">❦</div>
+  <ul class="list" style="text-align:left">
+    <li>Optredens van namen die later groot werden</li>
+    <li>Kermisaffiches tot ver buiten Evergem</li>
+    <li>Het fuifzaaltje en de repetitiezolder</li>
+  </ul>
+</div></div></div>
+
+<div class="page" data-key="podium" data-label="Op het podium"><div class="pi"><div class="content center">
+  <div class="chap">Op dit podium stonden</div>
+  <div class="rule"></div>
+  <div class="bands">
+    <span>The Chop Choy Shaggies</span><span>Eton Crop</span><span>The Steve McQueens</span><span>Annalise</span><span>Dan Donovan</span><span>Kaz Lux</span><span>Drs P</span><span>Tom Wolf</span><span>Mike Silver</span><span>Katastroof</span><span>Jan Muës</span><span>The Nozems</span><span>The Mudgang</span><span>Raised Four</span>
+  </div>
+  <div class="rule"></div>
+  <p class="small">… en volgens het boekje van 1996 ook James Taylor.</p>
+</div></div></div>
+
+<div class="page" data-key="kermis-plaat" data-label="Jaren '80"><div class="pi"><div class="content">
+  <figure class="plate empty grow" data-slot="kermis80">
+    <div class="frame"><img alt=""><div class="wanted"><b>Affiche gezocht</b>Een kermisaffiche uit de jaren '80</div></div>
+    <figcaption>Een kermisaffiche</figcaption>
+  </figure>
+</div></div></div>
+
+<div class="page" data-key="twintig" data-label="1996"><div class="pi"><div class="content">
+  <div class="chap">Hoofdstuk V · 1996</div>
+  <figure class="plate contain grow" data-slot="boekje20">
+    <div class="frame"><img src="img/boekje20.jpg" alt="Eerste pagina van het jubileumboekje 20 jaar vzw Oemtata"></div>
+    <figcaption>Het jubileumboekje, getikt op de typemachine.</figcaption>
+  </figure>
+</div></div></div>
+
+<div class="page" data-key="abc" data-label="Het Oemta-ABC"><div class="pi"><div class="content">
+  <div class="chap">Uit het Oemta-ABC</div>
+  <div class="orn">❦</div>
+  <h3>Boot</h3>
+  <p>De boot uit Wippelgem kostte een prikje. De kraan om hem over de poort te tillen niet.</p>
+  <h3>Kernkoppen</h3>
+  <p>„Geen kernkoppen”, op een ochtend in superletters op het voetpad tussen gemeentehuis en kerk.</p>
+  <h3>Plastrondag</h3>
+  <p>Eén zaterdag per jaar, in plastron, op café in heel Ertvelde.</p>
+</div></div></div>
+
+<div class="page" data-key="rockabilly" data-label="2008"><div class="pi"><div class="content">
+  <div class="chap">Hoofdstuk VI</div>
+  <div class="year">2008</div>
+  <h2>Vetkuiven en chroom</h2>
+  <p style="text-align:center">De Oemtata wordt thuishaven van de rockabilly-scene.</p>
+  <figure class="plate grow" data-slot="motoren">
+    <div class="frame"><img src="img/motoren.jpg" alt="Een rij oldtimermotoren langs de straat"></div>
+  </figure>
+</div></div></div>
+
+<div class="page" data-key="rockabilly-plaat" data-label="2008"><div class="pi"><div class="content">
+  <figure class="plate contain grow" data-slot="rockabilly">
+    <div class="frame"><img src="img/rockabilly.jpg" alt="Flyer Rockabilly Day Weekender 22-23-24 augustus 2008"></div>
+    <figcaption>Het eerste Rockabilly Day Weekender</figcaption>
+  </figure>
+</div></div></div>
+
+<div class="page" data-key="earthfield" data-label="2010"><div class="pi"><div class="content">
+  <div class="chap">Hoofdstuk VII</div>
+  <div class="year">2010</div>
+  <h2>Rock Earthfield</h2>
+  <p style="text-align:center">Een gratis festival in hartje Ertvelde.</p>
+  <div class="row grow">
+    <figure class="plate contain" data-slot="re_affiche"><div class="frame"><img src="img/re_affiche.jpg" alt="Affiche Rock Earthfield"></div></figure>
+    <figure class="plate contain" data-slot="classics"><div class="frame"><img src="img/classics.jpg" alt="Affiche Earthfield Classics"></div></figure>
+  </div>
+</div></div></div>
+
+<div class="page" data-key="earthfield-plaat" data-label="2010"><div class="pi"><div class="content">
+  <figure class="plate grow" data-slot="re_publiek">
+    <div class="frame"><img src="img/re_publiek.jpg" alt="Publiek op Rock Earthfield"></div>
+    <figcaption>Gratis, en toch onbetaalbaar.</figcaption>
+  </figure>
+</div></div></div>
+
+<div class="page" data-key="tienjaren" data-label="2011 – 2015"><div class="pi"><div class="content">
+  <div class="chap">Hoofdstuk VII</div>
+  <h2>Kunst, poëzie en een <i>pluim</i></h2>
+  <div class="orn">❦</div>
+  <ul class="list">
+    <li><b>2011</b> · Pook en Oemtadell'Arte</li>
+    <li><b>2012</b> · Poemtata en een vernieuwde Wereldwinkel</li>
+    <li><b>2015</b> · De Groene Pluim voor onze vrijwilligers</li>
+  </ul>
+</div></div></div>
+
+<div class="page" data-key="tienjaren-plaat" data-label="2011 – 2015"><div class="pi"><div class="content">
+  <div class="row grow">
+    <figure class="plate contain" data-slot="dellarte2015"><div class="frame"><img src="img/dellarte2015.jpg" alt="Affiche Oemtadell'Arte 2015"></div><figcaption>Oemtadell'Arte</figcaption></figure>
+    <figure class="plate contain" data-slot="ww_heropening"><div class="frame"><img src="img/ww_heropening.jpg" alt="Affiche heropening Wereldwinkel"></div><figcaption>De Wereldwinkel</figcaption></figure>
+  </div>
+</div></div></div>
+
+<div class="page" data-key="bouwt" data-label="2017"><div class="pi"><div class="content">
+  <div class="chap">Hoofdstuk VIII</div>
+  <div class="year">2017</div>
+  <h2>Oemtata bouwt</h2>
+  <p style="text-align:center">Een nieuwe zaal voor 120 man, met stenen van een oude boerderij op Stoepe.</p>
+  <div class="figs">
+    <div><b>€30.000</b><span>eigen middelen</span></div>
+    <div><b>€50.000</b><span>van de gemeente</span></div>
+    <div><b>€15.000</b><span>verkochte stenen</span></div>
+  </div>
+  <figure class="plate grow" data-slot="bouwt_werf"><div class="frame"><img src="img/bouwt_werf.jpg" alt="De werf met stapels bakstenen"></div></figure>
+</div></div></div>
+
+<div class="page" data-key="bouwt-plaat" data-label="2017"><div class="pi"><div class="content">
+  <figure class="plate grow" data-slot="bouwt_groep">
+    <div class="frame"><img src="img/bouwt_groep.jpg" alt="Vrijwilligers voor de nieuwe gevel"></div>
+    <figcaption>De gevel staat, april 2017.</figcaption>
+  </figure>
+  <p class="note">De aannemer leerde zijn vrouw 41 jaar eerder kennen… in de Oemtata.</p>
+</div></div></div>
+
+<div class="page" data-key="erfpacht" data-label="2018"><div class="pi"><div class="content">
+  <div class="year">2018</div>
+  <h2>Getekend en <i>verzegeld</i></h2>
+  <p style="text-align:center">De erfpacht is rond. Het huis blijft van ons allemaal.</p>
+  <figure class="plate contain grow" data-slot="werfnocturne"><div class="frame"><img src="img/werfnocturne.jpg" alt="Affiche Lente in den Oemtata met werf-nocturne"></div></figure>
+</div></div></div>
+
+<div class="page" data-key="nieuwegeneratie" data-label="De nieuwe lichting"><div class="pi"><div class="content">
+  <div class="chap">Hoofdstuk IX</div>
+  <h2>De nieuwe lichting</h2>
+  <div class="collage">
+    <figure class="plate contain" data-slot="miava" style="left:0;top:0;width:46%;height:100%;transform:rotate(-2deg)"><div class="frame"><img src="img/miava.jpg" alt="Affiche Pre Newyear Rock Night"></div></figure>
+    <figure class="plate contain" data-slot="eindejaar" style="right:0;top:0;width:46%;height:58%;transform:rotate(2deg)"><div class="frame"><img src="img/eindejaar2019.jpg" alt="Affiche eindejaarsfeesten 2019"></div></figure>
+    <figure class="plate" data-slot="slaper" style="right:0;bottom:0;width:50%;height:38%"><div class="frame"><img src="img/slaper.jpg" alt="Iemand slaapt op de bank in het café"></div></figure>
+  </div>
+</div></div></div>
+
+<div class="page" data-key="vijftig-plaat" data-label="2026"><div class="pi"><div class="content">
+  <div class="year">2026</div>
+  <figure class="plate grow" data-slot="gevel">
+    <div class="frame"><img src="img/gevel.jpg" alt="Vrijwilligers voor de verlichte gevel van de Oemtata"></div>
+    <figcaption>Vijftig jaar, en nog altijd open.</figcaption>
+  </figure>
+</div></div></div>
+
+<div class="page" data-key="einde" data-label="2026"><div class="pi"><div class="content center">
+  <div class="orn">❦ ❦ ❦</div>
+  <p class="note" style="font-size:6.4cqw">En ze leefden nog lang en eigenzinnig.</p>
+  <div class="rule"></div>
+  <h2 style="font-size:14cqw"><i>Santé!</i></h2>
+</div></div></div>
+
+<div class="page" data-key="ideeen" data-label="Ideeën"><div class="pi"><div class="content center">
+  <div class="chap">Tussenspel</div>
+  <h2>Pak je pen</h2>
+  <div class="orn">❦</div>
+  <ol class="steps" style="text-align:left">
+    <li>Schrijf één idee voor een nieuwe activiteit op papier.</li>
+    <li>Zet je naam erbij.</li>
+    <li>Wie uit de pot getrokken wordt, vertelt zijn idee.</li>
+  </ol>
+</div></div></div>
+
+<div class="page" data-key="ideeen-prompts" data-label="Ideeën"><div class="pi"><div class="content">
+  <div class="chap">Om op gang te komen</div>
+  <div class="prompt">
+    <div>Een avond die nog <i>niet bestaat</i></div>
+    <div>Iets voor de <i>buren</i></div>
+    <div>Iets voor <i>jong én oud</i></div>
+    <div>Iets in de <i>nieuwe zaal</i></div>
+    <div>Iets van vroeger dat <i>terug mag</i></div>
+  </div>
+</div></div></div>
+
+<div class="page blank"><div class="pi"></div></div>
+
+<div class="page act" data-key="akte2" data-label="Sven"><div class="pi"><div class="content">
+  <div class="num">Akte II</div>
+  <div class="who">Sven</div>
+  <div class="epi">de Financiële Temmer</div>
+  <figure class="plate oval empty" data-slot="sven"><div class="frame"><img alt=""><div class="wanted"><b>Portret</b>Sven</div></div></figure>
+</div></div></div>
+
+<div class="page wide" data-key="financien" data-label="Financiële situatie"><div class="pi"><div class="content">
+  <div class="chap">Sven · de huidige situatie</div>
+  <h2>De financiële situatie</h2>
+  <figure class="plate contain empty grow" data-slot="financien">
+    <div class="frame"><img alt=""><div class="wanted"><b>Financieel overzicht</b>Voeg hier een afbeelding of screenshot van het overzicht toe</div></div>
+  </figure>
+</div></div></div>
+
+<div class="page" data-key="buren" data-label="Burensituatie"><div class="pi"><div class="content">
+  <div class="chap">Sven · de huidige situatie</div>
+  <h2>De buren</h2>
+  <div class="orn">❦</div>
+  <div class="notes"><h3>Kernpunten</h3>Hier komen Svens punten.</div>
+</div></div></div>
+
+<div class="page" data-key="pijnpunten" data-label="Pijnpunten"><div class="pi"><div class="content center">
+  <div class="chap">Uit de pot</div>
+  <h2>Waar knelt het <i>schoentje?</i></h2>
+  <div class="orn">❦</div>
+  <p class="lead">We trekken een naam.<br>Die persoon krijgt het woord.</p>
+</div></div></div>
+
+<div class="page blank"><div class="pi"></div></div>
+
+<div class="page act" data-key="akte3" data-label="Heiko &amp; Leonie"><div class="pi"><div class="content">
+  <div class="num">Akte III</div>
+  <div class="who">Heiko</div>
+  <div class="epi">de Goochelaar met de Zaag<br><span style="font-size:4.6cqw">en Leonie, zijn assistente</span></div>
+  <div class="row" style="width:62cqw">
+    <figure class="plate oval empty" data-slot="heiko"><div class="frame"><img alt=""><div class="wanted"><b>Portret</b>Heiko</div></div></figure>
+    <figure class="plate oval empty" data-slot="leonie"><div class="frame"><img alt=""><div class="wanted"><b>Portret</b>Leonie</div></div></figure>
+  </div>
+</div></div></div>
+
+<div class="page" data-key="mogelijkheden" data-label="Ruimte &amp; mogelijkheden"><div class="pi"><div class="content">
+  <div class="chap">Heiko zaagt</div>
+  <h2>Ruimte &amp; <i>mogelijkheden</i></h2>
+  <div class="orn">❦</div>
+  <div class="notes"><h3>Kernpunten</h3>Hier komen Heiko's punten.</div>
+</div></div></div>
+
+<div class="page" data-key="verantwoordelijkheden" data-label="Verantwoordelijkheden"><div class="pi"><div class="content">
+  <div class="chap">Heiko zaagt</div>
+  <h2>Verantwoordelijk&shy;heden</h2>
+  <div class="orn">❦</div>
+  <div class="notes"><h3>Sluitingsuur</h3>Hier komt de afspraak.</div>
+  <div class="notes"><h3>Toogverantwoordelijke</h3>Hier komt wie wat doet.</div>
+</div></div></div>
+
+<div class="page" data-key="oplossingen" data-label="Oplossingen"><div class="pi"><div class="content">
+  <div class="chap">Leonie tovert</div>
+  <h2>Oplossingen</h2>
+  <div class="orn">❦</div>
+  <div class="notes"><h3>Wat doen we eraan?</h3>Hier komen de oplossingen.</div>
+  <div class="notes"><h3>Welke info moet ge?</h3>Hier komt wat elke vrijwilliger moet weten.</div>
+</div></div></div>
+
+<div class="page" data-key="teambuilding" data-label="Teambuilding"><div class="pi"><div class="content">
+  <div class="chap">Samen</div>
+  <h2>Teambuilding</h2>
+  <div class="orn">❦</div>
+  <div class="notes"><h3>Het plan</h3>Hier komt het idee.</div>
+</div></div></div>
+
+<div class="page blank"><div class="pi"></div></div>
+
+<div class="page act" data-key="akte4" data-label="Houdini Frank"><div class="pi"><div class="content">
+  <div class="num">Akte IV</div>
+  <div class="who" style="font-size:11cqw">Houdini Frank</div>
+  <div class="epi">De Sleutelceremonie</div>
+  <svg viewBox="0 0 120 50" style="width:40cqw" aria-hidden="true"><circle cx="22" cy="25" r="16" fill="none" stroke="#7a2222" stroke-width="5"/><circle cx="22" cy="25" r="6" fill="#7a2222"/><path d="M38 25h72v10m-14-10v12m-12-12v8" fill="none" stroke="#7a2222" stroke-width="5"/></svg>
+</div></div></div>
+
+<div class="page" data-key="sleutels" data-label="De sleutels"><div class="pi"><div class="content">
+  <div class="chap">Houdini Frank</div>
+  <h2>De nieuwe <i>sleutels</i></h2>
+  <div class="orn">❦</div>
+  <div class="notes"><h3>Wie krijgt een sleutel?</h3>Hier komt de uitleg van Frank.</div>
+  <div class="notes"><h3>Afspraken</h3>Hier komen de afspraken bij de sleutel.</div>
+</div></div></div>
+
+<div class="page" data-key="praktisch" data-label="Praktisch"><div class="pi"><div class="content">
+  <div class="chap">Tot slot</div>
+  <h2>Praktisch</h2>
+  <div class="orn">❦</div>
+  <div class="notes"><h3>Tentzeil</h3>Hier komen de afspraken.</div>
+  <p class="small" style="text-align:center">Op de volgende bladzijde: de flowchart.</p>
+</div></div></div>
+
+<div class="page wide" data-key="flowchart" data-label="Flowchart"><div class="pi"><div class="content">
+  <div class="chap">Praktisch</div>
+  <h2>Wie doet wat?</h2>
+  <figure class="plate contain empty grow" data-slot="flowchart">
+    <div class="frame"><img alt=""><div class="wanted"><b>Flowchart</b>Voeg hier een foto of scan van het schema toe</div></div>
+  </figure>
+</div></div></div>
+
+<div class="page" data-key="merci" data-label="Merci"><div class="pi"><div class="content center">
+  <div class="chap">Aan alle vrijwilligers, van 1976 tot vandaag</div>
+  <h2 style="font-size:15cqw"><i>Merci</i></h2>
+  <div class="orn">❦</div>
+  <p class="note">Het waren allemaal Oemtatanen, elk op hun eigen eigenzinnige manier.</p>
+  <img src="img/birdonly.png" alt="" style="width:40cqw;mix-blend-mode:multiply;opacity:.85">
+</div></div></div>
+
+<div class="page blank"><div class="pi"></div></div>
+
+<div class="page backcover" data-density="hard" data-label="Achterplat"><div class="pi">
+  <div class="goldframe"></div>
+  <div class="content center">
+    <div class="goldbird" style="width:34cqw"></div>
+    <div class="meta">Das Leben ist ein Oemtata<br>sinds 1976</div>
+  </div>
+</div></div>
+</div>
+
+<script src="js/page-flip.browser.js"></script>
+<script>
+(function(){
+  const src=document.getElementById('src'), bookEl=document.getElementById('book'), stage=document.getElementById('stage');
+  // expand wide pages into a left and right half
+  [...src.querySelectorAll(':scope > .page.wide')].forEach(w=>{
+    const inner=w.querySelector('.pi').innerHTML, key=w.dataset.key, lab=w.dataset.label;
+    const mk=side=>{const p=document.createElement('div');p.className='page wide';p.dataset.key=key+'-'+side;p.dataset.label=lab;
+      p.innerHTML='<div class="pi half-'+side+'"><div class="wide-inner">'+inner+'</div></div>';return p;};
+    w.replaceWith(mk('l'),mk('r'));
+  });
+  const pages=[...src.querySelectorAll(':scope > .page')];
+  const roman=n=>{const m=[[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];let r='';for(const[v,s]of m)while(n>=v){r+=s;n-=v;}return r;};
+  let plateNo=0;
+  pages.forEach((p,i)=>{
+    const last=i===pages.length-1;
+    if(i>0&&!last) p.classList.add(i%2?'L':'R');
+    if(p.dataset.key&&p.dataset.key.endsWith('-l')&&p.classList.contains('wide')&&i%2!==1) console.warn('wide page must start on a left page',i);
+    const pi=p.querySelector('.pi'); if(!pi) return;
+    const c=p.classList;
+    if(!c.contains('blank')&&!c.contains('cover')&&!c.contains('backcover')&&!c.contains('act')&&!c.contains('wide')){
+      const rh=document.createElement('div');rh.className='rhead';rh.textContent=i%2?'De Grote Oemta Bedankingsshow':(p.dataset.label||'');pi.appendChild(rh);
+      const fo=document.createElement('div');fo.className='folio';fo.textContent='— '+i+' —';pi.appendChild(fo);
+      pi.querySelectorAll('.plate:not(.empty):not(.contain) figcaption').forEach(fc=>{const s=document.createElement('span');s.className='pl';s.textContent='Plaat '+roman(++plateNo)+'.';fc.prepend(s);});
+    }
+  });
+
+  // editable text ids (wide halves share ids)
+  const editables={};
+  pages.forEach(pg=>{
+    if(!pg.dataset.key) return; const key=pg.dataset.key.replace(/-(l|r)$/,'');
+    pg.querySelectorAll('.pi h2,.pi h3,.pi p,.pi li,.pi figcaption,.pi .notes,.pi .epi,.pi .chap,.pi .prompt div').forEach((el,i)=>{
+      if(el.closest('.wanted')||el.closest('.toc')) return;
+      const id=key+'-'+i; el.dataset.eid=id; (editables[id]=editables[id]||{els:[],orig:el.innerHTML,last:null}).els.push(el);
+    });
+  });
+  // photo slots (wide halves share slots)
+  const slots={};
+  pages.forEach(pg=>pg.querySelectorAll('.plate[data-slot]').forEach(fig=>{
+    const id=fig.dataset.slot, img=fig.querySelector('img');
+    const s=slots[id]=slots[id]||{figs:[],def:img.getAttribute('src')||'',emptyDef:fig.classList.contains('empty'),asset:null};
+    s.figs.push(fig);
+    const tools=document.createElement('div');tools.className='ph-tools';
+    tools.innerHTML='<button type="button" class="pick">'+(s.emptyDef?'+ Foto':'Wijzig foto')+'</button><button type="button" class="reset">Origineel</button>';
+    fig.appendChild(tools);
+  }));
+
+  // ---------- the book ----------
+  const where=document.getElementById('where'), RATIO=500/694;
+  let flip=null, cur=0;
+  function isPortrait(){ return flip&&flip.getOrientation&&flip.getOrientation()==='portrait'; }
+  function label(){
+    const last=pages.length-1;
+    let idx=[cur]; if(!isPortrait()&&cur>0&&cur<last) idx=[cur,cur+1];
+    const labs=idx.map(i=>pages[i]&&pages[i].dataset.label).filter(Boolean);
+    where.innerHTML='<b></b> <span></span>'; where.querySelector('b').textContent=labs[labs.length-1]||'';
+    const nums=idx.filter(i=>i>0&&i<last&&!pages[i].classList.contains('blank'));
+    where.querySelector('span').textContent=nums.length?'· blz. '+nums.join('–'):'';
+    document.getElementById('prev').disabled=cur<=0;
+    document.getElementById('next').disabled=cur>=last;
+  }
+  function fit(){
+    const r=stage.getBoundingClientRect(); const h=r.height-28, w=r.width;
+    const spreadW=Math.min(w,h*RATIO*2);
+    const portrait=spreadW<520;
+    document.getElementById('bookbox').style.width=(portrait?Math.min(w,h*RATIO):spreadW)+'px';
+  }
+  function build(){
+    bookEl.innerHTML='';
+    if(!window.St||!St.PageFlip){ bookEl.innerHTML='<p class="loading">Het boek kon niet geladen worden. Herlaad de pagina.</p>'; return; }
+    const h=stage.getBoundingClientRect().height-28;
+    flip=new St.PageFlip(bookEl,{width:500,height:694,size:'stretch',minWidth:260,maxWidth:2000,minHeight:200,maxHeight:Math.max(300,h),
+      showCover:true,usePortrait:true,maxShadowOpacity:.5,flippingTime:950,drawShadow:true,mobileScrollSupport:false,autoSize:true,showPageCorners:true});
+    flip.loadFromHTML(pages);
+    flip.on('flip',e=>{cur=e.data;label();if(cur>=4)startClock();});
+    flip.on('changeOrientation',()=>label());
+    label();
+  }
+  fit(); build();
+  let rt; addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{fit();if(flip){flip.getSettings().maxHeight=Math.max(300,stage.getBoundingClientRect().height-28);flip.update();}},120);});
+
+  const go=d=>{ if(!flip) return; d>0?flip.flipNext():flip.flipPrev(); };
+  document.getElementById('next').onclick=()=>go(1);
+  document.getElementById('prev').onclick=()=>go(-1);
+  document.getElementById('tocBtn').onclick=()=>flip&&flip.flip(3);
+  document.addEventListener('click',e=>{ const b=e.target.closest&&e.target.closest('[data-goto]'); if(b&&flip){ e.preventDefault(); flip.flip(+b.dataset.goto); } });
+  document.addEventListener('keydown',e=>{
+    if(document.activeElement&&document.activeElement.isContentEditable) return;
+    if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(1);}
+    else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(-1);}
+    else if(e.key==='Home'&&flip){flip.flip(0);} else if(e.key==='End'&&flip){flip.flip(pages.length-1);}
+  });
+  document.getElementById('fs').onclick=()=>{
+    try{ if(document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(()=>toast('Volledig scherm is hier niet beschikbaar.')); }catch(_){toast('Volledig scherm is hier niet beschikbaar.');}
+  };
+  document.addEventListener('fullscreenchange',()=>setTimeout(()=>dispatchEvent(new Event('resize')),150));
+
+  // show clock
+  const clk=document.getElementById('clock'); let t0=null, acc=0, run=false, tick=null;
+  const fmt=ms=>{const s=Math.floor(ms/1000);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');};
+  const paint=()=>{clk.textContent=(run?'❚❚ ':'▶ ')+fmt(acc+(run?Date.now()-t0:0));clk.setAttribute('aria-pressed',run);};
+  function startClock(){ if(!run&&acc===0){run=true;t0=Date.now();tick=setInterval(paint,1000);paint();} }
+  clk.onclick=()=>{ if(run){acc+=Date.now()-t0;run=false;clearInterval(tick);} else {run=true;t0=Date.now();tick=setInterval(paint,1000);} paint(); };
+
+  const tEl=document.getElementById('toast'); let tT;
+  function toast(m){tEl.textContent=m;tEl.hidden=false;clearTimeout(tT);tT=setTimeout(()=>tEl.hidden=true,3200);}
+
+  // keep the page from turning while typing in edit mode
+  ['mousedown','touchstart'].forEach(ev=>window.addEventListener(ev,e=>{
+    if(document.body.classList.contains('editing')&&e.target.closest&&e.target.closest('[data-eid]')) e.stopPropagation();
+  },true));
+
+  // ---------- capabilities: shared photos + text edits ----------
+  (async()=>{
+    if(!window.claude||!window.claude.use) return;
+    const get=n=>window.claude.use(n).catch(()=>null);
+    const [db,assets,user]=await Promise.all([get('db'),get('assets'),get('user')]);
+    if(!db) return;
+    let canEdit=!!assets;
+    try{ if(!canEdit&&user) canEdit=!!(await user.canEdit()); }catch(_){}
+    if(canEdit) document.body.classList.add('can-edit');
+
+    const setSlot=(s,asset)=>{ s.asset=asset; s.figs.forEach(fig=>{ const img=fig.querySelector('img');
+      if(asset){ img.src='/_blob/'+asset; fig.classList.remove('empty'); fig.classList.add('overridden'); fig.querySelector('.pick').textContent='Wijzig foto'; }
+      else { fig.classList.remove('overridden'); if(s.def) img.src=s.def; else img.removeAttribute('src'); fig.classList.toggle('empty',s.emptyDef); fig.querySelector('.pick').textContent=s.emptyDef?'+ Foto':'Wijzig foto'; } }); };
+    db.collection('slots').onSnapshot(snap=>{
+      const seen=new Set();
+      snap.docs.forEach(d=>{const s=slots[d.id],v=d.data(); if(!s||!v||!v.asset) return; seen.add(d.id); if(s.asset!==v.asset) setSlot(s,v.asset);});
+      Object.entries(slots).forEach(([id,s])=>{ if(!seen.has(id)&&s.asset) setSlot(s,null); });
+    },()=>{});
+    db.collection('texts').onSnapshot(snap=>{
+      const seen=new Set();
+      snap.docs.forEach(d=>{const e=editables[d.id],v=d.data(); if(!e||!v||typeof v.t!=='string') return; seen.add(d.id); e.last=v.t;
+        e.els.forEach(el=>{ if(document.activeElement!==el){el.textContent=v.t;el.style.whiteSpace='pre-line';} });});
+      Object.entries(editables).forEach(([id,e])=>{ if(!seen.has(id)&&e.last!==null){ e.last=null; e.els.forEach(el=>{el.innerHTML=e.orig;el.style.whiteSpace='';}); }});
+    },()=>{});
+
+    if(!canEdit) return;
+    const input=document.getElementById('file'); let target=null;
+    document.addEventListener('click',async e=>{
+      const pick=e.target.closest&&e.target.closest('.ph-tools .pick'), reset=e.target.closest&&e.target.closest('.ph-tools .reset');
+      if(pick){ e.stopPropagation(); target=pick.closest('.plate').dataset.slot; input.value=''; input.click(); }
+      if(reset){ e.stopPropagation(); const id=reset.closest('.plate').dataset.slot, old=slots[id].asset;
+        try{ await db.collection('slots').doc(id).delete(); if(old&&assets) assets.delete(old).catch(()=>{}); toast('Originele foto teruggezet.'); }
+        catch(err){ toast('Terugzetten lukte niet: '+(err&&err.message||'onbekende fout')); } }
+    },true);
+    input.addEventListener('change',async()=>{
+      const file=input.files&&input.files[0]; if(!file||!target||!assets) return;
+      const id=target, old=slots[id].asset; toast('Foto wordt opgeladen…');
+      try{ const res=await assets.upload(file); await db.collection('slots').doc(id).set({asset:res.id,at:Date.now()});
+        if(old) assets.delete(old).catch(()=>{}); toast('Foto staat in het boek.'); }
+      catch(err){ toast('Opladen lukte niet: '+(err&&err.message||'probeer een kleinere foto')); }
+    });
+    const eb=document.getElementById('editBtn');
+    eb.onclick=()=>{ const on=!document.body.classList.contains('editing'); document.body.classList.toggle('editing',on); eb.setAttribute('aria-pressed',on);
+      Object.values(editables).forEach(e=>e.els.forEach(el=>{ if(on) el.setAttribute('contenteditable','true'); else el.removeAttribute('contenteditable'); }));
+      toast(on?'Klik op een tekst om hem aan te passen. Bladeren kan met de pijltjes onderaan.':'Tekst bewerken staat uit.'); };
+    document.addEventListener('focusout',async e=>{
+      const el=e.target; if(!el.dataset||!el.dataset.eid||!el.isContentEditable) return;
+      const id=el.dataset.eid, rec=editables[id], txt=el.innerText.replace(/\s+$/,'');
+      const d=document.createElement('div'); d.innerHTML=rec.orig; const origTxt=d.textContent.replace(/\s+$/,'');
+      if(txt===(rec.last??origTxt)) return;
+      try{ await db.collection('texts').doc(id).set({t:txt,at:Date.now()}); toast('Tekst bewaard.'); }
+      catch(err){ toast('Bewaren lukte niet: '+(err&&err.message||'onbekende fout')); }
+    });
+  })();
+})();
+</script>
+
+</body>
+</html>
