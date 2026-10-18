@@ -27,7 +27,7 @@ Een foto toevoegen in een lege lijst
   3. Haal het woord "empty" weg uit class="plate oval empty"
   4. Vervang <img alt=""> door <img src="img/sven.jpg" alt="Sven">
 
-  Lege lijsten: sarco, kermis80, sven, financien, heiko, leonie, flowchart.
+  Lege lijsten: sarco, kermis80, financien, vzw-frank, vzw-jannes, vzw-shayna.
 
 Tekst aanpassen
   Open index.html in een teksteditor (bv. Kladblok, TextEdit of VS Code) en pas
