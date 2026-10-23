@@ -104,6 +104,7 @@ body.can-edit .ph-tools{display:flex}
 .act .plate{width:36cqw;height:44cqw;flex:none}
 .act .row{justify-content:center}
 .act .row .plate{flex:none;width:29cqw;height:40cqw}
+.act .row.trio .plate{width:20cqw;height:28cqw}
 
 /* misc pieces */
 .toc{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2.4cqw}
@@ -166,6 +167,15 @@ body.can-edit .ph-tools{display:flex}
 .fl-q small{display:block;font-family:var(--f-old);font-style:italic;font-size:3.7cqw;color:var(--ink-soft);margin-top:.6cqw}
 .fl-a{font-family:var(--f-sc);font-size:5.8cqw;line-height:1.15;letter-spacing:.04em;color:var(--oxblood);padding-left:5cqw;text-indent:-5cqw;white-space:nowrap}
 .fl-a::before{content:"→ ";font-family:var(--f-old);color:var(--ink)}
+
+/* draaiboek (wide): two time columns per page, the middle gap sits on the spine */
+.dr{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;column-gap:16cqw}
+.dr-half{display:grid;grid-template-columns:1fr 1fr;column-gap:5cqw;align-content:start}
+.dr-t{font-family:var(--f-old);font-size:6.4cqw;line-height:1;color:var(--oxblood);border-bottom:.3cqw solid var(--ink);padding-bottom:1.2cqw;margin-bottom:2cqw}
+.dr ul.list{gap:1.2cqw;font-size:3.2cqw;line-height:1.28}
+.dr ul.list li{padding-left:3.8cqw}
+.dr ul.sub{margin-top:1.2cqw;padding-left:3.8cqw;gap:.6cqw}
+.dr ul.sub li::before{content:"–";color:var(--ink-soft)}
 
 /* editing */
 body.editing .pi [data-eid]{outline:.3cqw dashed rgba(122,34,34,.5);outline-offset:.6cqw;cursor:text}
