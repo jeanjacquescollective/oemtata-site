@@ -353,9 +353,9 @@
   <div class="orn">❦</div>
   <p class="lead" style="text-align:center">We draaien al een viertal jaar break-even, en dat moet anders!</p>
   <ul class="list">
-    <li>De drankverkoop in het café brengt te weinig op. Dat zien we duidelijk in de boekhouding.</li>
+    <li>De café brengt te weinig op. Dat is duidelijk in de boekhouding.</li>
     <li>Er wordt erg veel drank niet betaald in het café.</li>
-    <li>Dit moet stoppen: het kost ons handenvol geld.</li>
+    <li>Kost ons handenvol geld.</li>
   </ul>
   <div class="rule"></div>
   <p class="note">Elke barmedewerker zien we als bondgenoot om dit een halt toe te roepen.</p>
@@ -387,7 +387,6 @@
 <div class="page" data-key="pijnpunten" data-label="Pijnpunten"><div class="pi"><div class="content center">
   <h2>Waar knelt het <i>schoentje?</i></h2>
   <div class="orn">❦</div>
-  <p class="lead">We trekken een naam.<br>Die persoon krijgt het woord.</p>
 </div></div></div>
 
 <div class="page act" data-key="akte3" data-label="Heiko, Leonie &amp; Shayna"><div class="pi"><div class="content">
@@ -406,9 +405,9 @@
   <div class="orn">❦</div>
   <p>We krijgen vaak de klacht van de buren dat het te luid is in het weekend (vrijdag en zaterdag). Dit moet anders:</p>
   <div class="figs">
-    <div><b>3u00</b><span>muziek uit</span></div>
-    <div><b>3u15</b><span>last call</span></div>
-    <div><b>3u30</b><span>sluitingsuur</span></div>
+    <div><b>2u30</b><span>muziek uit</span></div>
+    <div><b>2u45</b><span>last call</span></div>
+    <div><b>3u00</b><span>sluitingsuur</span></div>
   </div>
   <div class="rule"></div>
   <p class="note">Komt de politie daarna langs? Dan is het voor eigen rekening.</p>
@@ -422,7 +421,6 @@
     <li><b>Joey</b> houdt de inventaris van de drank bij.</li>
     <li>Interesse in de inkomsten van de Oemta? Op de site van Jannes volg je alles live mee: <i>oemtata.be/inkomsten</i></li>
   </ul>
-  <div class="notes"><h3>Wat denken jullie?</h3>Luikjes aan de toog plaatsen: zou dat helpen?</div>
 </div></div></div>
 
 <div class="page" data-key="orde" data-label="Orde en netheid"><div class="pi"><div class="content">
@@ -436,7 +434,6 @@
     <li>Café</li>
   </ul>
   <div class="rule"></div>
-  <p class="note">Zij worden het aanspreekpunt als dit niet in orde is. Je hoeft dit niet alleen te doen. Samen staan we sterker!</p>
 </div></div></div>
 
 <div class="page" data-key="kassa" data-label="Kassa café"><div class="pi"><div class="content">
@@ -529,7 +526,7 @@
   <p class="lead" style="text-align:center">We maken jullie graag warm om evenementen te organiseren, in het café én in het zaaltje.</p>
   <ul class="list">
     <li>Op de drive van de Oemta staat een draaiboek met alle stappen voor een evenement in het zaaltje.</li>
-    <li>Inloggegevens van bepaalde sites staan ook op de drive. Voor specifieke logins, zoals die van de Provincie, contacteer je Bram of Heiko.</li>
+    <li>Inloggegevens van bepaalde sites staan ook op de drive. Voor specifieke logins, zoals die van de Provincie, contacteer je Jannes of Heiko.</li>
   </ul>
 </div></div></div>
 
@@ -546,11 +543,6 @@
 <div class="page" data-key="ideeen" data-label="Ideeën"><div class="pi"><div class="content center">
   <h2>Wat wilde gij hier doen?</h2>
   <div class="orn">❦</div>
-  <ol class="steps" style="text-align:left">
-    <li>Schrijf één idee voor een nieuwe activiteit op papier.</li>
-    <li>Zet je naam erbij.</li>
-    <li>Wie uit de pot getrokken wordt, vertelt zijn idee.</li>
-  </ol>
 </div></div></div>
 
 <div class="page" data-key="ideeen-prompts" data-label="Ideeën"><div class="pi"><div class="content">
@@ -576,14 +568,14 @@
   <h2>De nieuwe <i>sleutels</i></h2>
   <div class="orn">❦</div>
   <div class="notes"><h3>Wie krijgt een sleutel?</h3>Hier komt de uitleg van Frank.</div>
-  <div class="notes"><h3>Afspraken</h3>Hier komen de afspraken bij de sleutel.</div>
+  <div class="notes"><h3>Afspraken</h3><ul class="list" style="gap:1.4cqw"><li>De sleutel is persoonlijk. Niet doorgeven, niet laten bijmaken.</li><li>Uitlenen kan voor één avond of één evenement. Daarna komt hij meteen terug.</li><li>Leen je hem uit? Laat Frank weten wie hem heeft.</li><li>Kwijt? Meld het meteen aan Frank.</li><li>Een jaar niet meer actief? Dan geef je hem terug.</li></ul></div>
 </div></div></div>
 
 <div class="page" data-key="praktisch" data-label="Praktisch"><div class="pi"><div class="content">
   <h2>Praktisch</h2>
   <div class="orn">❦</div>
-  <div class="notes"><h3>Tentzeil</h3>Voorstel datum: ……………………</div>
-  <div class="notes"><h3>Klusjesdag</h3>Voorstel datum: ……………………</div>
+  <div class="notes"><h3>Tentzeil</h3></div>
+  <div class="notes"><h3>Klusjesdag</h3></div>
   <p class="small" style="text-align:center">Op de volgende bladzijde: de flowchart.</p>
 </div></div></div>
 
@@ -691,14 +683,25 @@
     const portrait=spreadW<520;
     document.getElementById('bookbox').style.width=(portrait?Math.min(w,h*RATIO):spreadW)+'px';
   }
+  // current page number in the url so a refresh reopens it
+  function fromHash(){
+    const n=parseInt(location.hash.slice(1),10); return n>=0&&n<pages.length?n:0;
+  }
+  function toHash(i){
+    const h='#'+i;
+    if(location.hash!==h) try{ history.replaceState(null,'',h); }catch(_){}
+  }
   function build(){
     bookEl.innerHTML='';
     if(!window.St||!St.PageFlip){ bookEl.innerHTML='<p class="loading">Het boek kon niet geladen worden. Herlaad de pagina.</p>'; return; }
     const h=stage.getBoundingClientRect().height-28;
-    flip=new St.PageFlip(bookEl,{width:500,height:694,size:'stretch',minWidth:260,maxWidth:2000,minHeight:200,maxHeight:Math.max(300,h),
+    cur=fromHash();
+    flip=new St.PageFlip(bookEl,{width:500,height:694,size:'stretch',minWidth:260,maxWidth:2000,minHeight:200,maxHeight:Math.max(300,h),startPage:cur,
       showCover:true,usePortrait:true,maxShadowOpacity:.5,flippingTime:950,drawShadow:true,mobileScrollSupport:false,autoSize:true,showPageCorners:true});
     flip.loadFromHTML(pages);
-    flip.on('flip',e=>{cur=e.data;label();if(cur>=4)startClock();});
+    cur=flip.getCurrentPageIndex();
+    flip.on('flip',e=>{cur=e.data;label();toHash(cur);if(cur>=4)startClock();});
+    addEventListener('hashchange',()=>{ const i=fromHash(); if(i!==cur) flip.flip(i); });
     flip.on('changeOrientation',()=>label());
     label();
   }
